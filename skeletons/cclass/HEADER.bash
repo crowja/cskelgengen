@@ -1,7 +1,7 @@
 #! /bin/bash
 
 _I_AM='cclassgen'
-_VERSION='XXX'
+_VERSION='%VERSION%'    # substituted by mkskelgen
 
 function print_usage {
   cat <<_TEXT
