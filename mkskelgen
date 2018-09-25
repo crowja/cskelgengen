@@ -44,11 +44,14 @@ function write_header {
   progfile=$2
   
   echo "Entered write_header()"
+  skelgen_version=`date +"%s"`
   
   if [ -f "$skel/HEADER.bash" ]
   then
     echo "Writing ${skel}/HEADER.bash to $progfile"
-    cat "$skel/HEADER.bash" > $progfile
+    cat "$skel/HEADER.bash" \
+    | sed -e"s/%VERSION%/${skelgen_version}/" \
+    > $progfile
   else
     echo "Touching $progfile"
     touch $progfile
