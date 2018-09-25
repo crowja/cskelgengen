@@ -1,0 +1,19 @@
+# List of regular files to export from this skeleton
+# Makefile
+# TMPL_CLASS_NAME.c
+# TMPL_CLASS_NAME.h
+# t/test.c
+# t/tinytest.h
+# NOTES.md
+# README.md
+
+# Revised list
+configure.ac
+Makefile.in
+MANIFEST
+src/main.c
+src/main.h
+src/t/test.c
+src/t/tinytest.h
+NOTES.md
+README.md

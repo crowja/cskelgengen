@@ -1,0 +1,40 @@
+SHELL = /bin/bash
+
+.PHONY: clean
+
+# Example of how to template for variables set by configure
+howdy:
+	echo "The OPENMP_CFLAGS ARE: @OPENMP_CFLAGS@"
+
+clean:
+	$(RM) *.o *~
+
+# PACKAGE_NAME      is @PACKAGE_NAME@
+# PACKAGE_TARNAME   is @PACKAGE_TARNAME@
+# PACKAGE_VERSION   is @PACKAGE_VERSION@
+# PACKAGE_STRING    is @PACKAGE_STRING@
+# PACKAGE_BUGREPORT is @PACKAGE_BUGREPORT@
+# PACKAGE_URL       is @PACKAGE_URL@
+#
+# builddir          is @builddir@
+# abs_builddir      is @abs_builddir@
+# top_builddir      is @top_builddir@
+# abs_top_builddir  is @abs_top_builddir@
+# 
+# srcdir            is @srcdir@
+# abs_srcdir        is @abs_srcdir@
+# top_srcdir        is @top_srcdir@
+# abs_top_srcdir    is @abs_top_srcdir@
+#
+# CFLAGS            is @CFLAGS@
+# DEFS              is @DEFS@
+# LDFLAGS           is @LDFLAGS@
+# LIBS              is @LIBS@
+#
+# prefix            is @prefix@
+# exec_prefix       is @exec_prefix@
+
+distclean:
+	$(MAKE) clean
+	$(RM) -r autom4te.cache  config.status config.log
+

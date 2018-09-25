@@ -1,0 +1,10 @@
+# List of regular files to export from this skeleton
+Makefile
+fgetopt.c
+fgetopt.h
+TMPL_CLASS_NAME.c
+TMPL_CLASS_NAME.h
+examples/ex1.c
+t/test.c
+t/tinytest.h
+

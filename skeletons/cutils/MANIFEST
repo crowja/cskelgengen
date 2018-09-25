@@ -1,0 +1,8 @@
+# List of regular files to export from this skeleton
+Makefile
+TMPL_CLASS_NAME.c
+TMPL_CLASS_NAME.h
+t/test.c
+t/tinytest.h
+NOTES.md
+README.md
