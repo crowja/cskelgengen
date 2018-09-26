@@ -4,7 +4,6 @@ SHELL = /bin/bash
 
 # Example of how to template for variables set by configure
 howdy:
-	echo "The OPENMP_CFLAGS ARE: @OPENMP_CFLAGS@"
 
 clean:
 	$(RM) *.o *~
@@ -33,6 +32,8 @@ clean:
 #
 # prefix            is @prefix@
 # exec_prefix       is @exec_prefix@
+#
+#                      @OPENMP_CFLAGS@"
 
 distclean:
 	$(MAKE) clean

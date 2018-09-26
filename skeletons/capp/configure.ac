@@ -29,4 +29,9 @@ dnl "./configure --disable-openmp".
 AC_OPENMP
 
 dnl Process Makefile.in to create Makefile
-AC_OUTPUT(Makefile)
+AC_CONFIG_FILES([ \
+Makefile \
+src/Makefile \
+])
+
+AC_OUTPUT
