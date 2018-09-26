@@ -25,8 +25,9 @@ check: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i"; \
-	  $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) -o t/a.out $$i.c TMPL_CLASS_NAME.o; \
-	  t/a.out; \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  && ( t/a.out ); \
 	done 
 
 vcheck: TMPL_CLASS_NAME.o
@@ -34,8 +35,9 @@ vcheck: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i"; \
-	  $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) -o t/a.out $$i.c TMPL_CLASS_NAME.o; \
-	  valgrind $(VALGRIND_FLAGS) t/a.out; \
+	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  && ( valgrind $(VALGRIND_FLAGS) t/a.out ); \
 	done 
 
 echeck: TMPL_CLASS_NAME.o
@@ -43,8 +45,9 @@ echeck: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i"; \
-	  $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS_EFENCE) -o t/a.out $$i.c TMPL_CLASS_NAME.o; \
-	  LD_PRELOAD=libefence.so ./t/a.out; \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS_EFENCE) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  && ( LD_PRELOAD=libefence.so ./t/a.out ) ; \
 	done 
 
 indent:

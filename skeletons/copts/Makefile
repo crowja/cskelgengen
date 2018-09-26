@@ -8,7 +8,7 @@ OTHER_SOURCE = ./fgetopt.c
 OTHER_INCLUDE =
 INDENT_FLAGS = 
 
-.PHONY: check vcheck check-examples indent clean
+.PHONY: check vcheck echeck check-examples indent clean
 
 TESTS = t/test
 EXAMPLES = examples/ex1
@@ -24,8 +24,9 @@ check: TMPL_CLASS_NAME.o fgetopt.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i"; \
-	  $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(LDFLAGS) -o t/a.out $$i.c TMPL_CLASS_NAME.o $(OTHER_SOURCE); \
-	  t/a.out -q; \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(LDFLAGS) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o $(OTHER_SOURCE) ) \
+	  && ( t/a.out ); \
 	done 
 
 vcheck: TMPL_CLASS_NAME.o fgetopt.o
@@ -33,8 +34,19 @@ vcheck: TMPL_CLASS_NAME.o fgetopt.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i"; \
-	  $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(LDFLAGS) -o t/a.out $$i.c TMPL_CLASS_NAME.o $(OTHER_SOURCE); \
-	  valgrind t/a.out -q; \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(LDFLAGS) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o $(OTHER_SOURCE) ) \
+	  && ( valgrind t/a.out ); \
+	done 
+
+echeck: TMPL_CLASS_NAME.o
+	@for i in $(TESTS); \
+	do \
+	  echo "--------------------"; \
+	  echo "Running test $$i ..."; \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS_EFENCE) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  && ( LD_PRELOAD=libefence.so ./t/a.out ); \
 	done 
 
 check-examples: TMPL_CLASS_NAME.o fgetopt.o
@@ -42,8 +54,9 @@ check-examples: TMPL_CLASS_NAME.o fgetopt.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running example $$i"; \
-	  $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(LDFLAGS) -o examples/a.out $$i.c TMPL_CLASS_NAME.o $(OTHER_SOURCE); \
-	  examples/a.out -h; \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(LDFLAGS) \
+		-o examples/a.out $$i.c TMPL_CLASS_NAME.o $(OTHER_SOURCE) ) \
+	  && ( examples/a.out -h ); \
 	done
 
 indent:
