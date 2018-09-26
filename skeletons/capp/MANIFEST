@@ -13,6 +13,7 @@ Makefile.in
 MANIFEST
 src/main.c
 src/main.h
+src/Makefile.in
 src/t/test.c
 src/t/tinytest.h
 NOTES.md
