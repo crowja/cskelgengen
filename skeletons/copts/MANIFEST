@@ -7,4 +7,5 @@ TMPL_CLASS_NAME.h
 examples/ex1.c
 t/test.c
 t/tinytest.h
-
+NOTES.md
+README.md
