@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# TODO probably want to change names "CLASS_NAME" and
+# Probably want to change names "CLASS_NAME" and
 # "$class_name" and so forth to "PKG_NAME" and "pkg_name"
 # to make a bit more sense in the context of non-classgen
 # generators.
