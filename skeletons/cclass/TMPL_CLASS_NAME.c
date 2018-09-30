@@ -25,19 +25,19 @@
 static const char version[] = "TMPL_CLASS_VERSION";
 
 struct TMPL_CLASS_NAME {
-   void           *x;
+   void       *x;
 };
 
 
 /*** TMPL_CLASS_TAG_new() ***/
 
 struct TMPL_CLASS_NAME *
-TMPL_CLASS_TAG_new( void )
+TMPL_CLASS_TAG_new(void)
 {
    struct TMPL_CLASS_NAME *tp;
 
-   tp = ( struct TMPL_CLASS_NAME * ) malloc( sizeof ( struct TMPL_CLASS_NAME ) );
-   if ( _IS_NULL( tp ) )
+   tp = (struct TMPL_CLASS_NAME *) malloc(sizeof (struct TMPL_CLASS_NAME));
+   if (_IS_NULL(tp))
       return NULL;
 
    /* Do some magic here ... */
@@ -49,19 +49,19 @@ TMPL_CLASS_TAG_new( void )
 /*** TMPL_CLASS_TAG_free() ***/
 
 void
-TMPL_CLASS_TAG_free( struct TMPL_CLASS_NAME *p )
+TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME *p)
 {
 
    /* Do some magic here ... */
 
-   _FREE( p );
+   _FREE(p);
 }
 
 
 /*** TMPL_CLASS_TAG_version() ***/
 
-const char     *
-TMPL_CLASS_TAG_version( void )
+const char *
+TMPL_CLASS_TAG_version(void)
 {
    return version;
 }
@@ -70,7 +70,7 @@ TMPL_CLASS_TAG_version( void )
 /*** TMPL_CLASS_TAG_init() ***/
 
 int
-TMPL_CLASS_TAG_init( struct TMPL_CLASS_NAME *p, void *x )
+TMPL_CLASS_TAG_init(struct TMPL_CLASS_NAME *p, void *x)
 {
 
    /* Do some magic here ... */
