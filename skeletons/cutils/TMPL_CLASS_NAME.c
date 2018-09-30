@@ -38,8 +38,8 @@ TMPL_CLASS_TAG_func1(const char *cp)
 
 /*** TMPL_CLASS_TAG_version() ***/
 
-const char     *
-TMPL_CLASS_TAG_version( void )
+const char *
+TMPL_CLASS_TAG_version(void)
 {
    return version;
 }

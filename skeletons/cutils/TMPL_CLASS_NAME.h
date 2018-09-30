@@ -19,7 +19,6 @@
 /**
  *  @brief FIXME Example function.
  *  @details FIXME longer description here ...
- *
  *  @param cp [in] Pointer to a string.
  */
 
