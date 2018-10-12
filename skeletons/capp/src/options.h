@@ -2,6 +2,7 @@ struct options {
    char       *fname;                       /* input file name, if any */
    unsigned    quiet_flag;
    unsigned    verbosity;
+   unsigned    version_flag;
 };
 
 struct options *options_new(void);

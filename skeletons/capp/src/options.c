@@ -33,6 +33,7 @@ options_new(void)
    tp->fname = NULL;
    tp->quiet_flag = 0;
    tp->verbosity = 0;
+   tp->version_flag = 0;
 
    return tp;
 }
@@ -121,9 +122,8 @@ options_parse(struct options *p, int argc, char *argv[])
             break;
 
          case 'v':
-            /* printf("%s-%s\n", _PACKAGE_NAME, _PACKAGE_VERSION); */
-            /* TODO Need to figure out what to do here ... */
-            exit(0);
+            p->version_flag = 1;
+            break;
 
          case '?':
             fprintf(stderr, "Bad option \n");

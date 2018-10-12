@@ -8,7 +8,7 @@ SRC_DIR      = ./src
 BUILD_DIR    = ./build
 
 CC           = gcc
-CFLAGS       = -I$(SRC_DIR) -std=c99 -pedantic -Wall
+CFLAGS       = -I$(SRC_DIR) -std=c99 -pedantic -Wall -DPACKAGE_VERSION="@PACKAGE_VERSION@"
 
 MKDIR        = mkdir -p
 
@@ -23,7 +23,7 @@ $(BUILD_DIR)/rf: $(BUILD_DIR)/main.o $(BUILD_DIR)/options.o $(BUILD_DIR)/fgetopt
 	$(CC) $(LDFLAGS) -o $(BUILD_DIR)/rf \
 		$(BUILD_DIR)/main.o $(BUILD_DIR)/options.o $(BUILD_DIR)/fgetopt.o
 
-$(BUILD_DIR)/main.o: $(SRC_DIR)/main.c $(SRC_DIR)/main.h
+$(BUILD_DIR)/main.o: $(SRC_DIR)/main.c $(SRC_DIR)/main.h 
 	$(CC) -c $(CFLAGS) -o $(BUILD_DIR)/main.o $(SRC_DIR)/main.c
 
 $(BUILD_DIR)/options.o: $(SRC_DIR)/options.c $(SRC_DIR)/options.h

@@ -23,15 +23,12 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-static const char version[] = "0.0-alpha";
-
-/*** rf_version() ***/
-
-const char *
-rf_version(void)
-{
-   return version;
-}
+#define QUOTE(name) #name
+#define STR(macro) QUOTE(macro)
+#ifndef PACKAGE_VERSION
+#define PACKAGE_VERSION dev
+#endif
+#define PACKAGE_VERSION_STR STR(PACKAGE_VERSION)
 
 int
 main(int argc, char *argv[])
@@ -44,6 +41,11 @@ main(int argc, char *argv[])
     *     the name of the numerical features file, if any
     *     the name of the categorical features
     */
+
+   if (o->version_flag) {
+       printf("prog_name %s\n", PACKAGE_VERSION_STR);
+       exit(0);
+   }
 
    options_free(o);
    return 0;
