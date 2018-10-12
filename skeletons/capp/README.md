@@ -1,2 +1,3 @@
-# Dev notes on TMPL_CLASS_NAME
+# TMPL_CLASS_NAME
 
+TBD

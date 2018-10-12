@@ -1,20 +1,17 @@
 # List of regular files to export from this skeleton
-# Makefile
-# TMPL_CLASS_NAME.c
-# TMPL_CLASS_NAME.h
-# t/test.c
-# t/tinytest.h
-# NOTES.md
-# README.md
 
-# Revised list
 configure.ac
 Makefile.in
-MANIFEST
-src/main.c
-src/main.h
-src/Makefile.in
-src/t/test.c
-src/t/tinytest.h
 NOTES.md
 README.md
+m4/ax_lib_sqlite3.m4
+src/extras
+src/fgetopt.c
+src/fgetopt.h
+src/main.c
+src/main.h
+src/Makefile
+src/options.c
+src/options.h
+t/tinytest.h
+

@@ -1,6 +1,6 @@
 /**
- *  @file TMPL_CLASS_NAME.c
- *  @version TMPL_CLASS_VERSION
+ *  @file main.c
+ *  @version 0.0-alpha
  *  @date %TODAY%
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
@@ -10,7 +10,8 @@
 #include <stdlib.h>
 #include <stdio.h>                               /* FIXME */
 #include <string.h>                              /* FIXME */
-#include "TMPL_CLASS_NAME.h"
+#include "main.h"
+#include "options.h"
 
 #ifdef  _IS_NULL
 #undef  _IS_NULL
@@ -22,28 +23,31 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-static const char version[] = "TMPL_CLASS_VERSION";
+static const char version[] = "0.0-alpha";
 
+/*** rf_version() ***/
 
-/*** TMPL_CLASS_TAG_func1() ***/
-
-int
-TMPL_CLASS_TAG_func1(const char *cp)
-{
-   /* Do some magic here ... */
-
-   return 0;
-}
-
-
-/*** TMPL_CLASS_TAG_version() ***/
-
-const char     *
-TMPL_CLASS_TAG_version( void )
+const char *
+rf_version(void)
 {
    return version;
 }
 
+int
+main(int argc, char *argv[])
+{
+   struct options *o = options_new();
+
+   options_parse(o, argc, argv);
+
+   /** options_parse() needs to deliver a few things, particularly:
+    *     the name of the numerical features file, if any
+    *     the name of the categorical features
+    */
+
+   options_free(o);
+   return 0;
+}
 
 #undef _IS_NULL
 #undef _FREE

@@ -1,13 +1,46 @@
 SHELL = /bin/bash
 
-.PHONY: clean
+.POSIX:
+.SUFFIXES:
+.SUFFIXES:
+
+SRC_DIR      = ./src
+BUILD_DIR    = ./build
+
+CC           = gcc
+CFLAGS       = -I$(SRC_DIR) -std=c99 -pedantic -Wall
+
+MKDIR        = mkdir -p
+
+.PHONY: clean dirs
+
+all: dirs $(BUILD_DIR)/rf
+
+dirs:
+	@$(MKDIR) $(BUILD_DIR)
+
+$(BUILD_DIR)/rf: $(BUILD_DIR)/main.o $(BUILD_DIR)/options.o $(BUILD_DIR)/fgetopt.o
+	$(CC) $(LDFLAGS) -o $(BUILD_DIR)/rf \
+		$(BUILD_DIR)/main.o $(BUILD_DIR)/options.o $(BUILD_DIR)/fgetopt.o
+
+$(BUILD_DIR)/main.o: $(SRC_DIR)/main.c $(SRC_DIR)/main.h
+	$(CC) -c $(CFLAGS) -o $(BUILD_DIR)/main.o $(SRC_DIR)/main.c
+
+$(BUILD_DIR)/options.o: $(SRC_DIR)/options.c $(SRC_DIR)/options.h
+	$(CC) -c $(CFLAGS) -o $(BUILD_DIR)/options.o $(SRC_DIR)/options.c
+
+$(BUILD_DIR)/fgetopt.o: $(SRC_DIR)/fgetopt.c $(SRC_DIR)/fgetopt.h
+	$(CC) -c $(CFLAGS) -o $(BUILD_DIR)/fgetopt.o $(SRC_DIR)/fgetopt.c
+
 
 # Example of how to template for variables set by configure
 howdy:
 
 clean:
-	$(RM) *.o *~
+	$(RM) $(BUILD_DIR)/rf $(BUILD_DIR)/*.o
 
+# SQLITE3_CFLAGS    is @SQLITE3_CFLAGS@
+# SQLITE3_LDFLAGS   is @SQLITE3_LDFLAGS@
 # PACKAGE_NAME      is @PACKAGE_NAME@
 # PACKAGE_TARNAME   is @PACKAGE_TARNAME@
 # PACKAGE_VERSION   is @PACKAGE_VERSION@

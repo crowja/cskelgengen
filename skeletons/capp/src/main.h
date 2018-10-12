@@ -1,35 +1,20 @@
 /**
- *  @file TMPL_CLASS_NAME.h
- *  @version TMPL_CLASS_VERSION
+ *  @file main.h
+ *  @version 0.0-alpha
  *  @date %TODAY%
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
  *  @details FIXME
  */
 
-#ifndef _TMPL_CLASS_NAME_UC_H_
-#define _TMPL_CLASS_NAME_UC_H_
-
-#ifdef  _PACKAGE_NAME
-#undef  _PACKAGE_NAME
-#endif
-#define _PACKAGE_NAME "TMPL_CLASS_NAME"
-
-
-/**
- *  @brief FIXME Example function.
- *  @details FIXME longer description here ...
- *
- *  @param cp [in] Pointer to a string.
- */
-
-int         TMPL_CLASS_TAG_func1(const char *cp);
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
 /**
  *  @brief Return the version of this package.
  *  @details FIXME longer description here ...
  */
 
-const char *TMPL_CLASS_TAG_version(void);
+const char *rf_version(void);
 
 #endif
