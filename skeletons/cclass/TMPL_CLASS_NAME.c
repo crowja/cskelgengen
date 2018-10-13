@@ -36,7 +36,7 @@ TMPL_CLASS_TAG_new(void)
 {
    struct TMPL_CLASS_NAME *tp;
 
-   tp = (struct TMPL_CLASS_NAME *) malloc(sizeof (struct TMPL_CLASS_NAME));
+   tp = (struct TMPL_CLASS_NAME *) malloc(sizeof(struct TMPL_CLASS_NAME));
    if (_IS_NULL(tp))
       return NULL;
 

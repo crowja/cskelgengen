@@ -2,6 +2,7 @@
 Makefile
 TMPL_CLASS_NAME.c
 TMPL_CLASS_NAME.h
+ex/ex_1.c
 t/test.c
 t/tinytest.h
 NOTES.md

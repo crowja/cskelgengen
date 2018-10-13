@@ -12,9 +12,10 @@ VALGRIND_FLAGS =  --leak-check=summary --undef-value-errors=yes --track-origins=
 
 INDENT_FLAGS = -TFILE -Tsize_t -Tuint8_t -Tuint16_t -Tuint32_t -Tuint64_t
 
-.PHONY: check vcheck indent clean
+.PHONY: check check-examples vcheck echeck indent clean
 
 TESTS = t/test
+EXAMPLES = ex/ex_1
 
 TMPL_CLASS_NAME.o: TMPL_CLASS_NAME.c TMPL_CLASS_NAME.h
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ TMPL_CLASS_NAME.c
@@ -27,6 +28,16 @@ check: TMPL_CLASS_NAME.o
 	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
 		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
 	  && ( t/a.out ); \
+	done 
+
+check-examples: TMPL_CLASS_NAME.o
+	@for i in $(EXAMPLES); \
+	do \
+	  echo "--------------------"; \
+	  echo "Running example $$i ..."; \
+	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
+		-o ex/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  && ( valgrind $(VALGRIND_FLAGS) ex/a.out ); \
 	done 
 
 vcheck: TMPL_CLASS_NAME.o
@@ -50,10 +61,12 @@ echeck: TMPL_CLASS_NAME.o
 	done 
 
 indent:
-	indent $(INDENT_FLAGS) TMPL_CLASS_NAME.c
-	indent $(INDENT_FLAGS) TMPL_CLASS_NAME.h
-	indent $(INDENT_FLAGS) t/test.c
+	@indent $(INDENT_FLAGS) TMPL_CLASS_NAME.c
+	@indent $(INDENT_FLAGS) TMPL_CLASS_NAME.h
+	@indent $(INDENT_FLAGS) t/test.c
+	@indent $(INDENT_FLAGS) ex/ex_1.c
 
 clean:
 	@/bin/rm -f *.o *~ *.BAK *.bak core.*
 	@/bin/rm -f t/*.o t/*~ t/*.BAK t/*.bak t/core.* t/a.out
+	@/bin/rm -f ex/*.o ex/*~ ex/*.BAK ex/*.bak ex/core.* ex/a.out
