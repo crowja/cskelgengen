@@ -47,16 +47,30 @@ test_constr(void)
 {
    struct TMPL_CLASS_NAME *z;
 
-   _printf_test_name("test_constr()", NULL);
+   _printf_test_name("test_constr()", "TMPL_CLASS_TAG_new, TMPL_CLASS_TAG_free");
 
    z = TMPL_CLASS_TAG_new();
    ASSERT("Constructor test", z);
    TMPL_CLASS_TAG_free(z);
 }
 
+#if 0                                            /* 11 yy */
+static void
+test_stub(void)
+{
+   struct TMPL_CLASS_NAME *z;
+
+   _printf_test_name("test_stub()", NULL);
+
+   z = TMPL_CLASS_TAG_new();
+   ASSERT("Constructor test", z);
+   TMPL_CLASS_TAG_free(z);
+}
+#endif
+
 
 int
-main(int argc, char *argv[])
+main(void)
 {
    printf("%s\n", TMPL_CLASS_TAG_version());
 
