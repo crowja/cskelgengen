@@ -74,6 +74,7 @@ TMPL_CLASS_TAG_init(struct TMPL_CLASS_NAME *p, void *x)
 {
 
    /* Do some magic here ... */
+   p->x = x;                                     /* FIXME */
 
    return 0;
 }
