@@ -16,6 +16,7 @@ INDENT_FLAGS = -TFILE -Tsize_t -Tuint8_t
 
 ##TESTS = t/test01 t/test02 t/test03 t/test04 t/test
 TESTS = t/test
+EXAMPLES = ex/ex_1
 
 TMPL_CLASS_NAME.o: TMPL_CLASS_NAME.c TMPL_CLASS_NAME.h
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ TMPL_CLASS_NAME.c
@@ -28,6 +29,16 @@ check: TMPL_CLASS_NAME.o
 	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
 		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
 	  && ( t/a.out ); \
+	done 
+
+check-examples: TMPL_CLASS_NAME.o
+	@for i in $(EXAMPLES); \
+	do \
+	  echo "--------------------"; \
+	  echo "Running example $$i"; \
+	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
+		-o ex/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  && ( valgrind $(VALGRIND_FLAGS) ex/a.out ); \
 	done 
 
 vcheck: TMPL_CLASS_NAME.o
@@ -51,9 +62,9 @@ echeck: TMPL_CLASS_NAME.o
 	done 
 
 indent:
-	indent $(INDENT_FLAGS) TMPL_CLASS_NAME.c
-	indent $(INDENT_FLAGS) TMPL_CLASS_NAME.h
-	for i in $(TESTS); \
+	@indent $(INDENT_FLAGS) TMPL_CLASS_NAME.c
+	@indent $(INDENT_FLAGS) TMPL_CLASS_NAME.h
+	@for i in $(TESTS); \
 	do \
 	  indent $(INDENT_FLAGS) $$i.c; \
 	done
@@ -61,4 +72,5 @@ indent:
 clean:
 	@/bin/rm -f TMPL_CLASS_NAME.o *.o *~ *.BAK *.bak core.* a.out
 	@/bin/rm -f t/*.o t/*~ t/*.BAK t/*.bak t/core.* t/a.out
+	@/bin/rm -f ex/*.o ex/*~ ex/*.BAK ex/*.bak ex/core.* ex/a.out
 

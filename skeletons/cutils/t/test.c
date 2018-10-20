@@ -50,6 +50,15 @@ test_func1(void)
    free(cp);
 }
 
+#if 0                                            /* 6 yy */
+void
+test_stub(void)
+{
+   _printf_test_name("test_stub()", NULL);
+   ASSERT_EQUALS(0, 0);
+}
+#endif
+
 int
 main(int argc, char *argv[])
 {

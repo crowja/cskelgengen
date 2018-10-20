@@ -4,5 +4,6 @@ TMPL_CLASS_NAME.c
 TMPL_CLASS_NAME.h
 t/test.c
 t/tinytest.h
+ex/ex_1.c
 NOTES.md
 README.md
