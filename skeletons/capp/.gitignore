@@ -1,6 +1,7 @@
-capp/Makefile
-capp/autom4te.cache/
-capp/config.log
-capp/config.status
-capp/configure
+Makefile
+autom4te.cache
+autom4te.cache/
+config.log
+config.status
+configure
 
