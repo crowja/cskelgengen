@@ -25,8 +25,8 @@ check: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i ..."; \
-	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
-		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o $(LDFLAGS) ) \
 	  && ( t/a.out ); \
 	done 
 
@@ -35,8 +35,8 @@ check-examples: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running example $$i ..."; \
-	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
-		-o ex/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+		-o ex/a.out $$i.c TMPL_CLASS_NAME.o $(LDFLAGS) ) \
 	  && ( valgrind $(VALGRIND_FLAGS) ex/a.out ); \
 	done 
 
@@ -45,8 +45,8 @@ vcheck: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i ..."; \
-	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
-		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o $(LDFLAGS) ) \
 	  && ( valgrind $(VALGRIND_FLAGS) t/a.out ); \
 	done 
 
@@ -55,8 +55,8 @@ echeck: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i ..."; \
-	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS_EFENCE) \
-		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o $(LDFLAGS_EFENCE) ) \
 	  && ( LD_PRELOAD=libefence.so ./t/a.out ); \
 	done 
 
