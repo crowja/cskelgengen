@@ -17,7 +17,6 @@ AC_PREREQ([2.69])
 AC_COPYRIGHT([John A. Crow])
 AC_CONFIG_MACRO_DIR([m4])
 
-dnl Switch to a C++ compiler, and check if it works.
 AC_LANG(C)
 AC_PROG_CC
 
