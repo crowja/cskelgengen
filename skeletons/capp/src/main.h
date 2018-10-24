@@ -15,6 +15,6 @@
  *  @details FIXME longer description here ...
  */
 
-const char *rf_version(void);
+const char *main_version(void);
 
 #endif
