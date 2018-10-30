@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <float.h>
+#include <math.h>
 #include <string.h>
 #include "TMPL_CLASS_NAME.h"
 #include "t/tinytest.h"
@@ -41,6 +43,13 @@ _printf_test_name(char *name, char *info)
       printf("\n");
 }
 
+static int
+_two_doubles_equal(double x, double y)
+{
+   double      t = fabs(x) + fabs(y);
+   return fabs(x - y) < 4 * DBL_EPSILON * t ? 1 : 0;
+}
+
 
 static void
 test_constr(void)
@@ -52,18 +61,22 @@ test_constr(void)
    z = TMPL_CLASS_TAG_new();
    ASSERT("Constructor test", z);
    TMPL_CLASS_TAG_free(z);
+
 }
 
-#if 0                                            /* 11 yy */
+#if 0                                            /* 14 yy */
 static void
 test_stub(void)
 {
    struct TMPL_CLASS_NAME *z;
+   double      x = 1.23;                    /* TODO */
 
    _printf_test_name("test_stub()", NULL);
 
    z = TMPL_CLASS_TAG_new();
-   ASSERT("Constructor test", z);
+   ASSERT("Constructor test, pt 1", z);
+   ASSERT("Here's a test ...", _two_doubles_equal(x, 1.23));
+
    TMPL_CLASS_TAG_free(z);
 }
 #endif
