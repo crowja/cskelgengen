@@ -1,1 +1,5 @@
 build/
+*.c~
+*.h~
+*.o
+a.out
