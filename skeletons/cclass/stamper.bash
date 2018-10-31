@@ -19,8 +19,10 @@ cat ${fname}~ \
   > ${fname}
 
 if [ $? -eq 0 ]; then
-  :
+  exit 0
 else
   mv ${fname}~ ${fname}
   echo "Error setting timestamp for file \"${fname}\"" >&2
+  exit 1
 fi
+
