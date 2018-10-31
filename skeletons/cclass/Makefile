@@ -12,7 +12,7 @@ VALGRIND_FLAGS =  --leak-check=summary --undef-value-errors=yes --track-origins=
 
 INDENT_FLAGS = -TFILE -Tsize_t -Tuint8_t -Tuint16_t -Tuint32_t -Tuint64_t
 
-.PHONY: check check-examples vcheck echeck indent clean
+.PHONY: check check-examples vcheck echeck indent stamp clean
 
 TESTS = t/test
 EXAMPLES = ex/ex_1
@@ -65,6 +65,10 @@ indent:
 	@indent $(INDENT_FLAGS) TMPL_CLASS_NAME.h
 	@indent $(INDENT_FLAGS) t/test.c
 	@indent $(INDENT_FLAGS) ex/ex_1.c
+
+stamp:
+	@bash stamper.bash TMPL_CLASS_NAME.c
+	@bash stamper.bash TMPL_CLASS_NAME.h
 
 clean:
 	@/bin/rm -f *.o *~ *.BAK *.bak core.*

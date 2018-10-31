@@ -22,6 +22,11 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
+#ifdef  _TIMESTAMP
+#undef  _TIMESTAMP
+#endif
+#define _TIMESTAMP
+
 static const char version[] = "TMPL_CLASS_VERSION";
 
 struct TMPL_CLASS_NAME {
@@ -80,5 +85,6 @@ TMPL_CLASS_TAG_init(struct TMPL_CLASS_NAME *p, void *x)
 }
 
 
-#undef _IS_NULL
-#undef _FREE
+#undef  _IS_NULL
+#undef  _FREE
+#undef  _TIMESTAMP
