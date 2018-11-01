@@ -12,9 +12,8 @@ VALGRIND_FLAGS = --leak-check=full --undef-value-errors=yes
 
 INDENT_FLAGS = -TFILE -Tsize_t -Tuint8_t
 
-.PHONY: check vcheck indent clean
+.PHONY: check vcheck indent stamp clean
 
-##TESTS = t/test01 t/test02 t/test03 t/test04 t/test
 TESTS = t/test
 EXAMPLES = ex/ex_1
 
@@ -26,8 +25,8 @@ check: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i"; \
-	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
-		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o $(LDFLAGS) ) \
 	  && ( t/a.out ); \
 	done 
 
@@ -36,8 +35,8 @@ check-examples: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running example $$i"; \
-	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
-		-o ex/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+		-o ex/a.out $$i.c TMPL_CLASS_NAME.o $(LDFLAGS) ) \
 	  && ( valgrind $(VALGRIND_FLAGS) ex/a.out ); \
 	done 
 
@@ -46,8 +45,8 @@ vcheck: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i"; \
-	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS) \
-		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
+	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o $(LDFLAGS) ) \
 	  && ( valgrind $(VALGRIND_FLAGS) t/a.out ); \
 	done 
 
@@ -56,9 +55,9 @@ echeck: TMPL_CLASS_NAME.o
 	do \
 	  echo "--------------------"; \
 	  echo "Running test $$i"; \
-	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) $(LDFLAGS_EFENCE) \
-		-o t/a.out $$i.c TMPL_CLASS_NAME.o ) \
-	  && ( LD_PRELOAD=libefence.so ./t/a.out ) ; \
+	  ( $(CC)    $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(OTHER_SOURCE) \
+		-o t/a.out $$i.c TMPL_CLASS_NAME.o $(LDFLAGS_EFENCE) ) \
+	  && ( LD_PRELOAD=libefence.so t/a.out ) ; \
 	done 
 
 indent:
@@ -68,6 +67,10 @@ indent:
 	do \
 	  indent $(INDENT_FLAGS) $$i.c; \
 	done
+
+stamp:
+	@bash stamper.bash TMPL_CLASS_NAME.c
+	@bash stamper.bash TMPL_CLASS_NAME.h
 
 clean:
 	@/bin/rm -f TMPL_CLASS_NAME.o *.o *~ *.BAK *.bak core.* a.out
