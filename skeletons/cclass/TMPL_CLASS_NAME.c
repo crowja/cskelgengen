@@ -1,7 +1,7 @@
 /**
  *  @file TMPL_CLASS_NAME.c
  *  @version TMPL_CLASS_VERSION
- *  @date %TODAY%
+ *  @date
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
  *  @details FIXME
@@ -21,11 +21,6 @@
 #undef  _FREE
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
-
-#ifdef  _TIMESTAMP
-#undef  _TIMESTAMP
-#endif
-#define _TIMESTAMP
 
 static const char version[] = "TMPL_CLASS_VERSION";
 
@@ -82,4 +77,3 @@ TMPL_CLASS_TAG_version(void)
 
 #undef  _IS_NULL
 #undef  _FREE
-#undef  _TIMESTAMP
