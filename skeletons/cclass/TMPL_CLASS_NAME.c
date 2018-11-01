@@ -33,7 +33,6 @@ struct TMPL_CLASS_NAME {
    void       *x;
 };
 
-
 /*** TMPL_CLASS_TAG_new() ***/
 
 struct TMPL_CLASS_NAME *
@@ -50,7 +49,6 @@ TMPL_CLASS_TAG_new(void)
    return tp;
 }
 
-
 /*** TMPL_CLASS_TAG_free() ***/
 
 void
@@ -61,16 +59,6 @@ TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME *p)
 
    _FREE(p);
 }
-
-
-/*** TMPL_CLASS_TAG_version() ***/
-
-const char *
-TMPL_CLASS_TAG_version(void)
-{
-   return version;
-}
-
 
 /*** TMPL_CLASS_TAG_init() ***/
 
@@ -84,6 +72,13 @@ TMPL_CLASS_TAG_init(struct TMPL_CLASS_NAME *p, void *x)
    return 0;
 }
 
+/*** TMPL_CLASS_TAG_version() ***/
+
+const char *
+TMPL_CLASS_TAG_version(void)
+{
+   return version;
+}
 
 #undef  _IS_NULL
 #undef  _FREE
