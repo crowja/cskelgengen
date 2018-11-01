@@ -43,6 +43,7 @@ _printf_test_name(char *name, char *info)
       printf("\n");
 }
 
+
 static int
 _two_doubles_equal(double x, double y)
 {
