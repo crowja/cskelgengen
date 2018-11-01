@@ -22,8 +22,12 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-static const char version[] = "TMPL_CLASS_VERSION";
+#ifdef  _TIMESTAMP
+#undef  _TIMESTAMP
+#endif
+#define _TIMESTAMP
 
+static const char version[] = "TMPL_CLASS_VERSION";
 
 /*** TMPL_CLASS_TAG_func1() ***/
 
@@ -35,7 +39,6 @@ TMPL_CLASS_TAG_func1(const char *cp)
    return 0;
 }
 
-
 /*** TMPL_CLASS_TAG_version() ***/
 
 const char *
@@ -43,7 +46,6 @@ TMPL_CLASS_TAG_version(void)
 {
    return version;
 }
-
 
 #undef _IS_NULL
 #undef _FREE

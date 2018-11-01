@@ -1,9 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <float.h>
+#include <math.h>
 #include <string.h>
 #include "TMPL_CLASS_NAME.h"
 #include "tinytest.h"
-
 
 #ifdef _COLOR_CODE
 #undef _COLOR_CODE
@@ -37,33 +38,38 @@ _printf_test_name(char *name, char *info)
       printf("\n");
 }
 
-void        test_func1(void);
+static int
+_two_doubles_equal(double x, double y)
+{
+   double      t = fabs(x) + fabs(y);
+   return fabs(x - y) < 4 * DBL_EPSILON * t ? 1 : 0;
+}
 
-void
+static void
 test_func1(void)
 {
    char       *cp = malloc(10000);
 
-   _printf_test_name("test_func1()", NULL);
+   _printf_test_name("test_func1", "TMPL_CLASS_TAG_func1");
    memset(cp, 'a', 10000);
    ASSERT_EQUALS(0, TMPL_CLASS_TAG_func1(cp));
    free(cp);
 }
 
-#if 0                                            /* 6 yy */
-void
+/* 7 yy */
+static void
 test_stub(void)
 {
-   _printf_test_name("test_stub()", NULL);
+   ASSERT("test 1 in test_stub", _two_doubles_equal(0.0, 0.0));
+   _printf_test_name("test_stub", NULL);
    ASSERT_EQUALS(0, 0);
 }
-#endif
 
 int
-main(int argc, char *argv[])
+main(void)
 {
    printf("%s\n", TMPL_CLASS_TAG_version());
-
+   test_stub();                                  /* only to quiet compiler warnings */
    RUN(test_func1);
 
    return TEST_REPORT();
