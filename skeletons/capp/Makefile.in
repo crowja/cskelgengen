@@ -11,7 +11,7 @@ CC           = gcc
 CPPFLAGS     = -I$(SRC_DIR) @CPPFLAGS@ -DPACKAGE_VERSION="@PACKAGE_VERSION@"
 CFLAGS       = -std=c99 -pedantic -Wall
 LDFLAGS      = @LDFLAGS@
-LIBS         = @LIBS@
+LDLIBS       = @LIBS@
 
 MKDIR_P      = /bin/mkdir -p
 RM           = /bin/rm
@@ -31,7 +31,7 @@ $(BUILD_DIR)/a.out:
 		$(BUILD_DIR)/fgetopt.o \
 		$(BUILD_DIR)/main.o \
 		$(BUILD_DIR)/options.o \
-		$(LDFLAGS) $(LIBS)
+		$(LDFLAGS) $(LDLIBS)
 
 $(BUILD_DIR)/fgetopt.o: $(SRC_DIR)/fgetopt.c $(SRC_DIR)/fgetopt.h
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/fgetopt.o $(SRC_DIR)/fgetopt.c
