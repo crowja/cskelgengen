@@ -8,18 +8,20 @@ SRC_DIR      = ./src
 BUILD_DIR    = ./build
 
 CC           = gcc
-CPPFLAGS     = -I$(SRC_DIR) -DPACKAGE_VERSION="@PACKAGE_VERSION@"
+CPPFLAGS     = -I$(SRC_DIR) @CPPFLAGS@ -DPACKAGE_VERSION="@PACKAGE_VERSION@"
 CFLAGS       = -std=c99 -pedantic -Wall
-LDFLAGS      =
+LDFLAGS      = @LDFLAGS@
+LIBS         = @LIBS@
 
-MKDIR        = mkdir -p
+MKDIR_P      = /bin/mkdir -p
+RM           = /bin/rm
 
 .PHONY: clean dirs
 
 all: dirs $(BUILD_DIR)/a.out
 
 dirs:
-	@$(MKDIR) $(BUILD_DIR)
+	@$(MKDIR_P) $(BUILD_DIR)
 
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/fgetopt.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/main.o
@@ -29,7 +31,7 @@ $(BUILD_DIR)/a.out:
 		$(BUILD_DIR)/fgetopt.o \
 		$(BUILD_DIR)/main.o \
 		$(BUILD_DIR)/options.o \
-		$(LDFLAGS)
+		$(LDFLAGS) $(LIBS)
 
 $(BUILD_DIR)/fgetopt.o: $(SRC_DIR)/fgetopt.c $(SRC_DIR)/fgetopt.h
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/fgetopt.o $(SRC_DIR)/fgetopt.c
