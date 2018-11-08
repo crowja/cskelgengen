@@ -1,3 +1,5 @@
+RM = /bin/rm
+
 all:
 	@echo "Limited purpose Makefile. Try 'make clean' or 'make indent' ..."
 
