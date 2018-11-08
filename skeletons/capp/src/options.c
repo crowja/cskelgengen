@@ -3,6 +3,7 @@
 #include <string.h>
 #include "options.h"
 #include "fgetopt.h"
+#include "linewrapper.h"
 
 #ifdef  _IS_NULL
 #undef  _IS_NULL
@@ -64,22 +65,30 @@ options_free(struct options *p)
 void
 options_help_msg(struct options *p, FILE *out)
 {
-   char        indent[] = "    ";
+   unsigned    indent = 5;
+   unsigned    width = 75;
+   struct linewrapper *w = lwrap_new();
+
    fprintf(out, "Usage: %s [options] infile1 [infile2 ...]\n", p->appname);
    fprintf(out, "Options:\n");
 
    fprintf(out, "%s\n", "-h, --help");
-   fprintf(out, "%s%s\n", indent, "Print this help message and exit.");
+   fprintf(out, "%s\n",
+           lwrap_format(w, indent, width, "Print this help message and exit."));
 
    fprintf(out, "%s\n", "-q, --quiet");
-   fprintf(out, "%s%s\n", indent, "Run quietly.");
+   fprintf(out, "%s\n", lwrap_format(w, indent, width, "Run quietly."));
 
    fprintf(out, "%s\n", "-V, --verbosity");
-   fprintf(out, "%s%s\n", indent,
-           "Increase the level of reporting, multiples accumulate.");
+   fprintf(out, "%s\n",
+           lwrap_format(w, indent, width,
+                        "Increase the level of reporting, multiples accumulate."));
 
    fprintf(out, "%s\n", "-v, --version");
-   fprintf(out, "%s%s\n", indent, "Print the version information and exit.");
+   fprintf(out, "%s\n",
+           lwrap_format(w, indent, width, "Print the version information and exit."));
+
+   lwrap_free(w);
 }
 
 /*** options_parse() ***/

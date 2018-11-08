@@ -14,7 +14,7 @@ LDFLAGS      = @LDFLAGS@
 LDLIBS       = @LIBS@
 
 MKDIR_P      = /bin/mkdir -p
-RM           = /bin/rm
+RM           = /bin/rm -f
 
 .PHONY: clean dirs
 
@@ -24,23 +24,33 @@ dirs:
 	@$(MKDIR_P) $(BUILD_DIR)
 
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/fgetopt.o
+$(BUILD_DIR)/a.out: $(BUILD_DIR)/linewrapper.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/main.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/options.o
+$(BUILD_DIR)/a.out: $(BUILD_DIR)/varstr.o
 $(BUILD_DIR)/a.out: 
 	$(CC) -o $(BUILD_DIR)/a.out \
 		$(BUILD_DIR)/fgetopt.o \
+		$(BUILD_DIR)/linewrapper.o \
 		$(BUILD_DIR)/main.o \
 		$(BUILD_DIR)/options.o \
+		$(BUILD_DIR)/varstr.o \
 		$(LDFLAGS) $(LDLIBS)
 
 $(BUILD_DIR)/fgetopt.o: $(SRC_DIR)/fgetopt.c $(SRC_DIR)/fgetopt.h
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/fgetopt.o $(SRC_DIR)/fgetopt.c
+
+$(BUILD_DIR)/linewrapper.o: $(SRC_DIR)/linewrapper.c $(SRC_DIR)/linewrapper.h
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/linewrapper.o $(SRC_DIR)/linewrapper.c
 
 $(BUILD_DIR)/main.o: $(SRC_DIR)/main.c $(SRC_DIR)/main.h 
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/main.o $(SRC_DIR)/main.c
 
 $(BUILD_DIR)/options.o: $(SRC_DIR)/options.c $(SRC_DIR)/options.h
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/options.o $(SRC_DIR)/options.c
+
+$(BUILD_DIR)/varstr.o: $(SRC_DIR)/varstr.c $(SRC_DIR)/varstr.h
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/varstr.o $(SRC_DIR)/varstr.c
 
 
 

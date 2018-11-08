@@ -30,11 +30,6 @@ main(int argc, char *argv[])
 
    options_parse(o, argc, argv);
 
-   /** options_parse() needs to deliver a few things, particularly:
-    *     the name of the numerical features file, if any
-    *     the name of the categorical features
-    */
-
    if (o->help_flag) {
       options_help_msg(o, stdout);
       options_free(o);
