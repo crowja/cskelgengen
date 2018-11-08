@@ -14,10 +14,16 @@
 #endif
 #define _FREE(p)                ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
+#define QUOTE(name) #name
+#define STR(macro) QUOTE(macro)
+#ifndef PACKAGE_VERSION
+#define PACKAGE_VERSION dev
+#endif
+#define PACKAGE_VERSION_STR STR(PACKAGE_VERSION)
+
 /**
  *  Structure is defined in options.h since it needs to be visible.
  */
-
 
 /*** options_new() ***/
 
@@ -30,7 +36,10 @@ options_new(void)
    if (_IS_NULL(tp))
       return NULL;
 
+   tp->appname = "My name here";
+   tp->appvers = PACKAGE_VERSION_STR;
    tp->fname = NULL;
+   tp->help_flag = 0;
    tp->quiet_flag = 0;
    tp->verbosity = 0;
    tp->version_flag = 0;
@@ -50,13 +59,13 @@ options_free(struct options *p)
    _FREE(p);
 }
 
-/*** options_helpmsg() ***/
+/*** options_help_msg() ***/
 
 void
-options_helpmsg(FILE *out)
+options_help_msg(struct options *p, FILE *out)
 {
    char        indent[] = "    ";
-   fprintf(out, "Usage: MYNAME [options] infile1 [infile2 ...]\n");
+   fprintf(out, "Usage: %s [options] infile1 [infile2 ...]\n", p->appname);
    fprintf(out, "Options:\n");
 
    fprintf(out, "%s\n", "-h, --help");
@@ -72,7 +81,6 @@ options_helpmsg(FILE *out)
    fprintf(out, "%s\n", "-v, --version");
    fprintf(out, "%s%s\n", indent, "Print the version information and exit.");
 }
-
 
 /*** options_parse() ***/
 
@@ -105,8 +113,8 @@ options_parse(struct options *p, int argc, char *argv[])
       switch (c) {
 
          case 'h':
-            options_helpmsg(stdout);
-            exit(0);
+            p->help_flag = 1;
+            break;
 
          case 'p':
             printf("prefix set as %s\n", optarg);

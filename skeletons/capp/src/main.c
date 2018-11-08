@@ -23,13 +23,6 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-#define QUOTE(name) #name
-#define STR(macro) QUOTE(macro)
-#ifndef PACKAGE_VERSION
-#define PACKAGE_VERSION dev
-#endif
-#define PACKAGE_VERSION_STR STR(PACKAGE_VERSION)
-
 int
 main(int argc, char *argv[])
 {
@@ -42,9 +35,16 @@ main(int argc, char *argv[])
     *     the name of the categorical features
     */
 
+   if (o->help_flag) {
+      options_help_msg(o, stdout);
+      options_free(o);
+      exit(0);
+   }
+
    if (o->version_flag) {
-       printf("prog_name %s\n", PACKAGE_VERSION_STR);
-       exit(0);
+      printf("%s version %s\n", o->appname, o->appvers);
+      options_free(o);
+      exit(0);
    }
 
    options_free(o);
