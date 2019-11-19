@@ -1,6 +1,6 @@
 /**
  *  @file TMPL_CLASS_NAME.c
- *  @version TMPL_CLASS_VERSION
+ *  @version 0.0.0
  *  @date
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
@@ -22,7 +22,7 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-static const char version[] = "TMPL_CLASS_VERSION";
+static const char version[] = "0.0.0";
 
 struct TMPL_CLASS_NAME {
    void       *x;

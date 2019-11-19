@@ -1,6 +1,6 @@
 /**
  *  @file TMPL_CLASS_NAME.h
- *  @version TMPL_CLASS_VERSION
+ *  @version 0.0.0
  *  @date
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
