@@ -8,3 +8,4 @@ ex/ex_1.c
 stamper.bash
 NOTES.md
 README.md
+.bumpversion.cfg
