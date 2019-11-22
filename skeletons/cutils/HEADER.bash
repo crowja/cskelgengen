@@ -19,7 +19,7 @@ _TEXT
 
 class_name=''
 class_tag=''
-class_version="0.0-alpha"
+class_version="0.0.0"
 #dry_run_flag=0 <- leave this unset
 
 # Process the command line options
