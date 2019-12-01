@@ -22,8 +22,6 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-static const char version[] = "0.0.0";
-
 struct TMPL_CLASS_NAME {
    void       *x;
 };
@@ -72,7 +70,7 @@ TMPL_CLASS_TAG_init(struct TMPL_CLASS_NAME *p, void *x)
 const char *
 TMPL_CLASS_TAG_version(void)
 {
-   return version;
+   return "0.0.0";
 }
 
 #undef  _IS_NULL
