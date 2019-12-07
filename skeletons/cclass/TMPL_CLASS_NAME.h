@@ -18,33 +18,32 @@
 struct TMPL_CLASS_NAME;
 
 /**
- *  @brief Create and return a new TMPL_CLASS_NAME object.
- *  @details FIXME longer description here ...
+ *  @brief Constructor.
+ *  @details Create and return a new TMPL_CLASS_NAME object.
+ *  @returns New TMPL_CLASS_NAME object.
  */
-
 struct TMPL_CLASS_NAME *TMPL_CLASS_TAG_new(void);
 
 /**
- *  @brief Clean up and free a TMPL_CLASS_NAME structure.
- *  @details FIXME longer description here ...
+ *  @brief Destructor.
+ *  @details Clean up and free a TMPL_CLASS_NAME structure.
+ *  @param[in, out] p.
  */
-
 void        TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME *p);
 
 /**
  *  @brief Initialize a TMPL_CLASS_NAME object.
  *  @details FIXME longer description here ...
- *  @param p Pointer to a TMPL_CLASS_NAME object
- *  @param x FIXME
+ *  @param[in,out] p Pointer to a TMPL_CLASS_NAME object
+ *  @param[in] x FIXME
+    @returns FIXME
  */
-
 int         TMPL_CLASS_TAG_init(struct TMPL_CLASS_NAME *p, void *x);
 
 /**
  *  @brief Return the version of this package.
- *  @details FIXME longer description here ...
+ *  @returns Version string.
  */
-
 const char *TMPL_CLASS_TAG_version(void);
 
 #endif
