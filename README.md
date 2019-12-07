@@ -6,7 +6,7 @@ A code generator that generates code generators ...
 
 From the top-level directory run
 
-    $ ./mkskelgengen cclass
+    $ ./mkskelgen cclass
 
 This will create the binary build/cclassgen using the contents of
 skeletons/cclass. Cclassgen can then be moved to wherever. Do
@@ -22,8 +22,8 @@ thing to be useful for getting started quickly on new projects.
 
 When run as
 
-    $ ./mkskelgengen abc
+    $ ./mkskelgen abc
 
-mkskelgengen looks at skeletons/abc/MANIFEST to see what to include. So each
+mkskelgen looks at skeletons/abc/MANIFEST to see what to include. So each
 skeleton folder should have at least a MANIFEST. It also needs a HEADER.bash;
 see the folders for examples.
