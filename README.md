@@ -1,4 +1,4 @@
-# Cskelgengen -- Generates skeleton generators for C projects 0.1.0-dev0.
+# Cskelgengen -- Generates skeleton generators for C projects 0.1.1-dev0.
 
 A code generator that generates code generators ...
 

@@ -46,7 +46,7 @@ function write_header {
   
   echo "Entered write_header()"
   #skelgen_version=`date +"%s"`
-  skelgen_version="0.1.0-dev0"
+  skelgen_version="0.1.1-dev0"
   skelgen_version_date=`date +"%c"`
   
   if [ -f "$skel/HEADER.bash" ]
