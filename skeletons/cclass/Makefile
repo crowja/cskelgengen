@@ -70,7 +70,7 @@ echeck:
 	  && ( LD_PRELOAD=libefence.so ./t/a.out ); \
 	done 
 
-indent:
+indent: stamp
 	@indent $(INDENT_FLAGS) TMPL_CLASS_NAME.c
 	@indent $(INDENT_FLAGS) TMPL_CLASS_NAME.h
 	@indent $(INDENT_FLAGS) t/test.c
