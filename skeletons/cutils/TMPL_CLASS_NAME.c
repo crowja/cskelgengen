@@ -22,9 +22,6 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-static const char version[] = "0.0.0";
-
-/*** TMPL_CLASS_TAG_func1() ***/
 
 int
 TMPL_CLASS_TAG_func1(const char *cp)
@@ -34,12 +31,10 @@ TMPL_CLASS_TAG_func1(const char *cp)
    return 0;
 }
 
-/*** TMPL_CLASS_TAG_version() ***/
-
 const char *
 TMPL_CLASS_TAG_version(void)
 {
-   return version;
+   return "0.0.0";
 }
 
 #undef _IS_NULL

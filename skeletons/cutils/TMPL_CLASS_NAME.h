@@ -19,16 +19,16 @@
 /**
  *  @brief FIXME Example function.
  *  @details FIXME longer description here ...
- *  @param cp [in] Pointer to a string.
+ *  @param cp[in] Pointer to a string.
+ *  @returns FIXME.
  */
-
 int         TMPL_CLASS_TAG_func1(const char *cp);
 
 /**
  *  @brief Return the version of this package.
  *  @details FIXME longer description here ...
+ *  @returns Version string.
  */
-
 const char *TMPL_CLASS_TAG_version(void);
 
 #endif
