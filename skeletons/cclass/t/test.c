@@ -66,7 +66,7 @@ test_constr(void)
 
 }
 
-#if 0                                            /* 14 yy */
+#if 0                                            /* 16 yy */
 static void
 test_stub(void)
 {
@@ -80,7 +80,7 @@ test_stub(void)
    ASSERT("Here's a test ...", _two_doubles_equal(x, 1.23));
    ASSERT_EQUALS(10, 10);
 
-   TMPL_CLASS_TAG_free(z);
+   TMPL_CLASS_TAG_free(&z);
    ASSERT_EQUALS(NULL, z);
 }
 #endif
