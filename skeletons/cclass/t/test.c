@@ -57,11 +57,12 @@ test_constr(void)
 {
    struct TMPL_CLASS_NAME *z;
 
-   _printf_test_name("test_constr()", "TMPL_CLASS_TAG_new, TMPL_CLASS_TAG_free");
+   _printf_test_name("test_constr", "TMPL_CLASS_TAG_new, TMPL_CLASS_TAG_free");
 
    z = TMPL_CLASS_TAG_new();
    ASSERT("Constructor test", z);
-   TMPL_CLASS_TAG_free(z);
+   TMPL_CLASS_TAG_free(&z);
+   ASSERT_EQUALS(NULL, z);
 
 }
 
@@ -72,13 +73,15 @@ test_stub(void)
    struct TMPL_CLASS_NAME *z;
    double      x = 1.23;                    /* TODO */
 
-   _printf_test_name("test_stub()", NULL);
+   _printf_test_name("test_stub", NULL);
 
    z = TMPL_CLASS_TAG_new();
    ASSERT("Constructor test, pt 1", z);
    ASSERT("Here's a test ...", _two_doubles_equal(x, 1.23));
+   ASSERT_EQUALS(10, 10);
 
    TMPL_CLASS_TAG_free(z);
+   ASSERT_EQUALS(NULL, z);
 }
 #endif
 

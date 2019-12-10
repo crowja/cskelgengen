@@ -29,7 +29,7 @@ struct TMPL_CLASS_NAME *TMPL_CLASS_TAG_new(void);
  *  @details Clean up and free a TMPL_CLASS_NAME structure.
  *  @param[in, out] p.
  */
-void        TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME *p);
+void        TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME **pp);
 
 /**
  *  @brief Initialize a TMPL_CLASS_NAME object.

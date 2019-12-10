@@ -41,12 +41,13 @@ TMPL_CLASS_TAG_new(void)
 }
 
 void
-TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME *p)
+TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME **pp)
 {
 
    /* Do some magic here ... */
 
-   _FREE(p);
+   _FREE(*pp);
+   *pp = NULL;
 }
 
 int
