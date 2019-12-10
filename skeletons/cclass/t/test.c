@@ -63,7 +63,6 @@ test_constr(void)
    ASSERT("Constructor test", z);
    TMPL_CLASS_TAG_free(&z);
    ASSERT_EQUALS(NULL, z);
-
 }
 
 #if 0                                            /* 16 yy */
