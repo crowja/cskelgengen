@@ -31,7 +31,6 @@
 #endif
 #define _COLOR_RESET      "[0m"
 
-
 static void
 _printf_test_name(char *name, char *info)
 {
@@ -43,14 +42,12 @@ _printf_test_name(char *name, char *info)
       printf("\n");
 }
 
-
 static int
 _two_doubles_equal(double x, double y)
 {
    double      t = fabs(x) + fabs(y);
    return fabs(x - y) < 4 * DBL_EPSILON * t ? 1 : 0;
 }
-
 
 static void
 test_constr(void)
@@ -83,7 +80,6 @@ test_stub(void)
    ASSERT_EQUALS(NULL, z);
 }
 #endif
-
 
 int
 main(void)
