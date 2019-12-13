@@ -1,6 +1,6 @@
 /**
  *  @file TMPL_CLASS_NAME.c
- *  @version 0.0.0
+ *  @version 0.0.1-dev0
  *  @date %TODAY%
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
@@ -33,7 +33,7 @@ TMPL_CLASS_TAG_func1(const char *cp)
 const char *
 TMPL_CLASS_TAG_version(void)
 {
-   return "0.0.0";
+   return "0.0.1-dev0";
 }
 
 #undef _IS_NULL
