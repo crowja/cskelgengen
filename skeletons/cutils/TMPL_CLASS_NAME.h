@@ -15,7 +15,6 @@
 #endif
 #define _PACKAGE_NAME "TMPL_CLASS_NAME"
 
-
 /**
  *  @brief FIXME Example function.
  *  @details FIXME longer description here ...

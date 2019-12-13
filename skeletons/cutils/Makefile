@@ -41,6 +41,16 @@ check-examples:
 	  && ( valgrind $(VALGRIND_FLAGS) ex/a.out ); \
 	done 
 
+scheck-examples:
+	@for i in $(EXAMPLES); \
+	do \
+	  echo "--------------------"; \
+	  echo "Running example $$i"; \
+	  ( $(CC) -g $(CPPFLAGS) $(OTHER_INCLUDE) $(CFLAGS) $(GCC_SANITIZE_FLAGS) $(OTHER_SOURCE) \
+		-o ex/a.out $$i.c TMPL_CLASS_NAME.c $(LDFLAGS) ) \
+	  && ( ex/a.out ); \
+	done 
+
 vcheck:
 	@for i in $(TESTS); \
 	do \

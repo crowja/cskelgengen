@@ -22,7 +22,6 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-
 int
 TMPL_CLASS_TAG_func1(const char *cp)
 {
