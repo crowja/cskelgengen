@@ -33,7 +33,7 @@ TMPL_CLASS_TAG_func1(const char *cp)
 const char *
 TMPL_CLASS_TAG_version(void)
 {
-   return "0.0.0
+   return "0.0.0";
 }
 
 #undef _IS_NULL
