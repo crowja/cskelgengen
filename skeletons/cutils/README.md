@@ -1,3 +1,3 @@
-# TMPL_CLASS_NAME 0.0.1-dev0.
+# TMPL_CLASS_NAME 0.0.0
 
 
