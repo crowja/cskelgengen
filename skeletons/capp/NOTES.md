@@ -2,9 +2,9 @@
 
 ## To get started
 
-Run autoconf to generate the configure script, then run it to generate the
-Makefile from Makefile.in. This will help you understand what to change in
-configure.ac and Makefile.in.
+Run autoconf to generate the configure script, then run the configure script
+to generate the Makefile from Makefile.in. This will help you understand what
+to change in configure.ac and Makefile.in.
 
 Clean up configure.ac. It includes, for example, using
 
@@ -13,7 +13,7 @@ Clean up configure.ac. It includes, for example, using
 
 in order to show how to incorporate local Autoconf macros.
 
-Makefile.in also needs substantial cleaning. It contains many examples of
+Makefile.in will need substantial cleaning since it contains many examples of
 variables set by Autoconf templating.
 
 ## FYI
