@@ -1,4 +1,4 @@
-# Dev notes on TMPL_CLASS_NAME
+# Dev notes on TMPL_CLASS_NAME.
 
 ## To get started
 

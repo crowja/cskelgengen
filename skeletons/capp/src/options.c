@@ -38,7 +38,7 @@ options_new(void)
       return NULL;
 
    tp->appname = "My name here";
-   tp->appvers = PACKAGE_VERSION_STR;
+   tp->appvers = "0.0.0";
    tp->fname = NULL;
    tp->help_flag = 0;
    tp->quiet_flag = 0;
