@@ -26,8 +26,6 @@
  *  Structure is defined in options.h since it needs to be visible.
  */
 
-/*** options_new() ***/
-
 struct options *
 options_new(void)
 {
@@ -48,8 +46,6 @@ options_new(void)
    return tp;
 }
 
-/*** options_free() ***/
-
 void
 options_free(struct options *p)
 {
@@ -59,8 +55,6 @@ options_free(struct options *p)
    _FREE(p->fname);
    _FREE(p);
 }
-
-/*** options_help_msg() ***/
 
 void
 options_help_msg(struct options *p, FILE *out)
@@ -90,8 +84,6 @@ options_help_msg(struct options *p, FILE *out)
 
    lwrap_free(w);
 }
-
-/*** options_parse() ***/
 
 void
 options_parse(struct options *p, int argc, char *argv[])
