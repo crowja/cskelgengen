@@ -4,7 +4,7 @@ dnl else) will cause the generated configure to barf on finding
 dnl a working C compiler.
 AC_INIT(
   [My new package],
-  [0.0-alpha],
+  [0.0.0],
   [crowja@gmail.com],
   [my_new_pkg],
   [http://example.com],
@@ -26,6 +26,9 @@ dnl compiler already supports OpenMP, (b) if it has no way to
 dnl activate OpenMP support, or if the user overrides it via
 dnl "./configure --disable-openmp".
 AC_OPENMP
+
+dnl If we need to pick up SQLite3.
+dnl https://www.gnu.org/software/autoconf-archive/ax_lib_sqlite3.html.
 m4_include([m4/ax_lib_sqlite3.m4])
 AX_LIB_SQLITE3
 
