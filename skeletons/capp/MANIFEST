@@ -1,5 +1,6 @@
 # List of regular files to export from this skeleton
 
+.bumpversion.cfg
 configure.ac
 Makefile.in
 NOTES.md
