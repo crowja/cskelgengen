@@ -9,5 +9,6 @@ NOTES.md
 README.md
 stamper.bash
 .bumpversion.cfg
+doxygen.conf
 
 # And that's all folks ...
