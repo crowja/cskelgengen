@@ -1,4 +1,4 @@
-# Cskelgengen 0.5.0-dev0
+# Cskelgengen 0.6.0-dev0
 
 Generates skeleton generators for C projects. A code generator that generates code generators ...
 
