@@ -102,10 +102,11 @@ options_parse(struct options *p, int argc, char *argv[])
       {0}
    };
    struct optparse options;
-
-   int         fake_x;
+   int         fake_x;                      /* FIXME */
 
    optparse_init(&options, argv);
+   options.permute = 0;                          /* set = 1 to allow argv to be permuted */
+
    while ((option = optparse_long(&options, longopts, NULL)) != -1) {
       switch (option) {
          case 'h':

@@ -42,6 +42,13 @@ main(int argc, char *argv[])
       exit(0);
    }
 
+   /* o->extras will be NULL or a NULL-terminated list */
+   if (!_IS_NULL(o->extras)) {
+      char      **tp = o->extras;
+      while (!_IS_NULL(*tp))
+         printf("Also %s\n", *(tp++));           /* *tp++, clarified */
+   }
+
    options_free(o);
    return 0;
 }
