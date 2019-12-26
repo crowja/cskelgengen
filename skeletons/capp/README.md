@@ -1,4 +1,4 @@
-# TMPL_CLASS_NAME 0.0.0.
+# TMPL_CLASS_NAME 0.1.0-dev0.
 
 TBD do it now ...
 
