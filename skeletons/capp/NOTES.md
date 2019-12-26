@@ -22,9 +22,18 @@ variables set by Autoconf templating.
 The Makefile in src is simply a convenience for the dev; it's not called by the
 top-level Makefile as part of the build.
 
-## Updating external source
+## Updating external dependencies:
 
      wget -Psrc \
         https://raw.githubusercontent.com/skeeto/optparse/master/optparse.h
+     wget -Psrc \
+        https://raw.githubusercontent.com/crowja/linewrapper/master/linewrapper.c
+     wget -Psrc \
+        https://raw.githubusercontent.com/crowja/linewrapper/master/linewrapper.h
+     wget -Psrc \
+        https://raw.githubusercontent.com/crowja/varstr/master/varstr.c
+     wget -Psrc \
+        https://raw.githubusercontent.com/crowja/varstr/master/varstr.h
 
      http://git.savannah.gnu.org/gitweb/?p=autoconf-archive.git;a=blob_plain;f=m4/ax_lib_sqlite3.m4
+
