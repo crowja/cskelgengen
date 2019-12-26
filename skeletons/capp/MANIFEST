@@ -7,8 +7,6 @@ NOTES.md
 README.md
 m4/ax_lib_sqlite3.m4
 src/extras
-src/fgetopt.c
-src/fgetopt.h
 src/linewrapper.c
 src/linewrapper.h
 src/main.c
