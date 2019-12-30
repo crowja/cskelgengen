@@ -1,6 +1,6 @@
 /**
  *  @file main.c
- *  @version 0.0.0
+ *  @version 0.1.0-dev0
  *  @date %TODAY%
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
@@ -40,6 +40,13 @@ main(int argc, char *argv[])
       printf("%s version %s\n", o->appname, o->appvers);
       options_free(o);
       exit(0);
+   }
+
+   /* o->extras will be NULL or a NULL-terminated list */
+   if (!_IS_NULL(o->extras)) {
+      char      **tp = o->extras;
+      while (!_IS_NULL(*tp))
+         printf("Also %s\n", *(tp++));           /* *tp++, clarified */
    }
 
    options_free(o);

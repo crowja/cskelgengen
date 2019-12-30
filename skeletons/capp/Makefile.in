@@ -1,4 +1,4 @@
-SHELL = /bin/bash
+SHELL = /bin/sh
 
 .POSIX:
 .SUFFIXES:
@@ -8,37 +8,34 @@ SRC_DIR      = ./src
 BUILD_DIR    = ./build
 
 CC           = gcc
-CPPFLAGS     = -I$(SRC_DIR) @CPPFLAGS@ -DPACKAGE_VERSION="@PACKAGE_VERSION@"
+CPPFLAGS     = -I$(SRC_DIR) @CPPFLAGS@ 
+##GCC_SANITIZE_FLAGS = -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer
+GCC_SANITIZE_FLAGS =
 CFLAGS       = -std=c99 -pedantic -Wall
-LDFLAGS      = @LDFLAGS@
+LDFLAGS      = @LDFLAGS@ $(GCC_SANITIZE_FLAGS)
 LDLIBS       = @LIBS@
 
 MKDIR_P      = /bin/mkdir -p
 RM           = /bin/rm -f
 
-.PHONY: clean dirs
+.PHONY: all clean dirs
 
 all: dirs $(BUILD_DIR)/a.out
 
 dirs:
 	@$(MKDIR_P) $(BUILD_DIR)
 
-$(BUILD_DIR)/a.out: $(BUILD_DIR)/fgetopt.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/linewrapper.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/main.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/options.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/varstr.o
 $(BUILD_DIR)/a.out: 
 	$(CC) -o $(BUILD_DIR)/a.out \
-		$(BUILD_DIR)/fgetopt.o \
 		$(BUILD_DIR)/linewrapper.o \
 		$(BUILD_DIR)/main.o \
 		$(BUILD_DIR)/options.o \
 		$(BUILD_DIR)/varstr.o \
 		$(LDFLAGS) $(LDLIBS)
-
-$(BUILD_DIR)/fgetopt.o: $(SRC_DIR)/fgetopt.c $(SRC_DIR)/fgetopt.h
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/fgetopt.o $(SRC_DIR)/fgetopt.c
 
 $(BUILD_DIR)/linewrapper.o: $(SRC_DIR)/linewrapper.c $(SRC_DIR)/linewrapper.h
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/linewrapper.o $(SRC_DIR)/linewrapper.c
@@ -59,6 +56,7 @@ howdy:
 
 clean:
 	$(RM) $(BUILD_DIR)/a.out $(BUILD_DIR)/*.o
+	( cd src && $(MAKE) clean )
 
 # SQLITE3_CFLAGS    is @SQLITE3_CFLAGS@
 # SQLITE3_LDFLAGS   is @SQLITE3_LDFLAGS@

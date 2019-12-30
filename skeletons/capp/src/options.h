@@ -6,6 +6,7 @@ struct options {
    unsigned    quiet_flag;
    unsigned    verbosity;
    unsigned    version_flag;
+   char      **extras;
 };
 
 struct options *options_new(void);

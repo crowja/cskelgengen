@@ -4,7 +4,7 @@ dnl else) will cause the generated configure to barf on finding
 dnl a working C compiler.
 AC_INIT(
   [My new package],
-  [0.0.0],
+  [0.1.0-dev0],
   [crowja@gmail.com],
   [my_new_pkg],
   [http://example.com],
