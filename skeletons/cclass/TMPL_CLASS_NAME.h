@@ -2,9 +2,8 @@
  *  @file TMPL_CLASS_NAME.h
  *  @version 0.0.0
  *  @date
- *  @copyright %COPYRIGHT%
- *  @brief FIXME
- *  @details FIXME
+ *  @copyright
+ *  @license Unlicense <http://unlicense.org/>
  */
 
 #ifndef _TMPL_CLASS_NAME_UC_H_
