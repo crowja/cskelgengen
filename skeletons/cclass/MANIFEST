@@ -7,7 +7,6 @@ t/test.c
 t/tinytest.h
 NOTES.md
 README.md
-stamper.bash
 .bumpversion.cfg
 
 # And that's all folks ...
