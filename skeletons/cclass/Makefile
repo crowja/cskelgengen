@@ -88,8 +88,8 @@ indent: stamp
 	@indent $(INDENT_FLAGS) ex/ex_1.c
 
 stamp:
-	@bash stamper.bash TMPL_CLASS_NAME.c
-	@bash stamper.bash TMPL_CLASS_NAME.h
+	@stamper.bash TMPL_CLASS_NAME.c
+	@stamper.bash TMPL_CLASS_NAME.h
 
 clean:
 	@/bin/rm -f *.o *~ *.BAK *.bak core.*
