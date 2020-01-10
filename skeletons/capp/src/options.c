@@ -31,7 +31,7 @@ options_new(void)
       return NULL;
 
    tp->appname = "MY NAME GOES HERE";
-   tp->appvers = "0.1.0-dev0";
+   tp->appvers = "0.0.0";
    tp->fname = NULL;
    tp->help_flag = 0;
    tp->quiet_flag = 0;

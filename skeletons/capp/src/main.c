@@ -1,8 +1,9 @@
 /**
  *  @file main.c
- *  @version 0.1.0-dev0
- *  @date %TODAY%
- *  @copyright %COPYRIGHT%
+ *  @version 0.0.0
+ *  @date
+ *  @copyright 2020
+ *  @license Unlicense <http://unlicense.org/>
  *  @brief FIXME
  *  @details FIXME
  */
