@@ -43,15 +43,16 @@ options_new(void)
 }
 
 void
-options_free(struct options *p)
+options_free(struct options **pp)
 {
-   if (_IS_NULL(p))
+   if (_IS_NULL(*pp))
       return;
 
    /* p->extras has pointers from optparse, no need to free them */
-   _FREE(p->extras);
-   _FREE(p->fname);
-   _FREE(p);
+   _FREE((*pp)->extras);
+   _FREE((*pp)->fname);
+   _FREE(*pp);
+   *pp = NULL;
 }
 
 void
@@ -83,7 +84,7 @@ options_help_msg(struct options *p, FILE *out)
    fprintf(out, "%s\n",
            lwrap_format(w, indent, width, "Print the version information and exit."));
 
-   lwrap_free(w);
+   lwrap_free(&w);
 }
 
 void

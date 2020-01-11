@@ -33,13 +33,13 @@ main(int argc, char *argv[])
 
    if (o->help_flag) {
       options_help_msg(o, stdout);
-      options_free(o);
+      options_free(&o);
       exit(0);
    }
 
    if (o->version_flag) {
       printf("%s version %s\n", o->appname, o->appvers);
-      options_free(o);
+      options_free(&o);
       exit(0);
    }
 
@@ -50,7 +50,7 @@ main(int argc, char *argv[])
          printf("Also %s\n", *(tp++));           /* *tp++, clarified */
    }
 
-   options_free(o);
+   options_free(&o);
    return 0;
 }
 
