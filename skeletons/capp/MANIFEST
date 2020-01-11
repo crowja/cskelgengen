@@ -2,6 +2,7 @@
 
 .bumpversion.cfg
 configure.ac
+import.bash
 Makefile.in
 NOTES.md
 README.md
