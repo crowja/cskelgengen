@@ -1,8 +1,8 @@
-SHELL = /bin/sh
-
 .POSIX:
 .SUFFIXES:
 .SUFFIXES:
+
+SHELL = /bin/sh
 
 SRC_DIR      = ./src
 BUILD_DIR    = ./build
@@ -16,14 +16,19 @@ LDFLAGS      = @LDFLAGS@ $(GCC_SANITIZE_FLAGS)
 LDLIBS       = @LIBS@
 
 MKDIR_P      = /bin/mkdir -p
+CP           = /bin/cp
 RM           = /bin/rm -f
 
-.PHONY: all clean dirs
+.PHONY: all clean dirs install
 
 all: dirs $(BUILD_DIR)/a.out
 
 dirs:
 	@$(MKDIR_P) $(BUILD_DIR)
+
+install: $(BUILD_DIR)/a.out
+	@$(MKDIR_P) @prefix@/bin
+	@$(CP) $(BUILD_DIR)/a.out @prefix@/bin
 
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/linewrapper.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/main.o
