@@ -3,6 +3,7 @@ struct options {
    char       *appvers;
    char       *fname;                       /* input file name, if any */
    unsigned    help_flag;
+   char       *prefix;
    unsigned    quiet_flag;
    unsigned    verbosity;
    unsigned    version_flag;

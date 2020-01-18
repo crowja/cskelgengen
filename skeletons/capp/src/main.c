@@ -43,6 +43,20 @@ main(int argc, char *argv[])
       exit(0);
    }
 
+   if (o->quiet_flag)
+      o->verbosity = 0;
+
+   if (o->verbosity > 0) {
+      printf("*** SOME OPTIONS DELIVERED TO MAIN.C ***\n");
+      printf("appname         %s\n", o->appname);
+      printf("appvers         %s\n", o->appvers);
+      printf("--help          %d\n", o->help_flag);
+      printf("--prefix        %s\n", o->prefix);
+      printf("--quiet         %d\n", o->quiet_flag);
+      printf("--verbosity     %d\n", o->verbosity);
+      printf("--version_flag  %d\n", o->version_flag);
+   }
+
    /* o->extras will be NULL or a NULL-terminated list */
    if (!_IS_NULL(o->extras)) {
       char      **tp = o->extras;
