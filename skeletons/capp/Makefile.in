@@ -35,29 +35,34 @@ dirs:
 install: $(BUILD_DIR)/a.out
 	@ $(MKDIR_P) @prefix@/bin && $(CP) $(BUILD_DIR)/a.out @prefix@/bin
 
+$(BUILD_DIR)/a.out: $(BUILD_DIR)/errmsg.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/linewrapper.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/main.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/options.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/varstr.o
 $(BUILD_DIR)/a.out: 
 	$(CC) -o $(BUILD_DIR)/a.out \
+		$(BUILD_DIR)/errmsg.o \
 		$(BUILD_DIR)/linewrapper.o \
 		$(BUILD_DIR)/main.o \
 		$(BUILD_DIR)/options.o \
 		$(BUILD_DIR)/varstr.o \
 		$(LDFLAGS) $(LDLIBS)
 
+$(BUILD_DIR)/errmsg.o: $(SRC_DIR)/errmsg.c $(SRC_DIR)/errmsg.h
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/errmsg.c
+
 $(BUILD_DIR)/linewrapper.o: $(SRC_DIR)/linewrapper.c $(SRC_DIR)/linewrapper.h
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/linewrapper.o $(SRC_DIR)/linewrapper.c
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/linewrapper.c
 
 $(BUILD_DIR)/main.o: $(SRC_DIR)/main.c $(SRC_DIR)/main.h 
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/main.o $(SRC_DIR)/main.c
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/main.c
 
 $(BUILD_DIR)/options.o: $(SRC_DIR)/options.c $(SRC_DIR)/options.h
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/options.o $(SRC_DIR)/options.c
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/options.c
 
 $(BUILD_DIR)/varstr.o: $(SRC_DIR)/varstr.c $(SRC_DIR)/varstr.h
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $(BUILD_DIR)/varstr.o $(SRC_DIR)/varstr.c
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/varstr.c
 
 tarball:
 	@if [ -n "@PACKAGE_TARNAME@" ]; then \
@@ -79,7 +84,7 @@ tarball:
 	fi
 
 clean:
-	$(RM) $(BUILD_DIR)/a.out $(BUILD_DIR)/*.o
+	$(RM) $(BUILD_DIR)/* && \
 	( cd src && $(MAKE) clean )
 
 # Example of how to template for variables set by configure
