@@ -4,6 +4,8 @@ all:
 	@echo "Limited purpose Makefile. Try 'make clean' or 'make indent' ..."
 
 indent:
+	@indent $(INDENT_FLAGS) errmsg.c
+	@indent $(INDENT_FLAGS) errmsg.h
 	@indent $(INDENT_FLAGS) main.c
 	@indent $(INDENT_FLAGS) main.h
 	@indent $(INDENT_FLAGS) options.c

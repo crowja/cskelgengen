@@ -28,6 +28,11 @@
 #endif
 #define _COLOR_YELLOW     "[1;33m"
 
+#ifdef  _COLOR_BLUE
+#undef  _COLOR_BLUE
+#endif
+#define _COLOR_BLUE       "[1;34m"
+
 #ifdef  _COLOR_RESET
 #undef  _COLOR_RESET
 #endif
@@ -37,6 +42,18 @@ void
 errmsg_error(FILE *out, const char *info)
 {
    fprintf(out, "%c%s%s%c%s", _COLOR_CODE, _COLOR_RED, "[ERROR]", _COLOR_CODE,
+           _COLOR_RESET);
+
+   if (NULL != info)
+      printf(" %s", info);
+
+   printf("\n");
+}
+
+void
+errmsg_success(FILE *out, const char *info)
+{
+   fprintf(out, "%c%s%s%c%s", _COLOR_CODE, _COLOR_GREEN, "[SUCCESS]", _COLOR_CODE,
            _COLOR_RESET);
 
    if (NULL != info)
