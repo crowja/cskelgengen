@@ -1,10 +1,9 @@
 /**
  *  @file TMPL_CLASS_NAME.c
  *  @version 0.0.0
- *  @date %TODAY%
- *  @copyright %COPYRIGHT%
- *  @brief FIXME
- *  @details FIXME
+ *  @date
+ *  @copyright
+ *  @license Unlicense <http://unlicense.org/>
  */
 
 #include <stdlib.h>

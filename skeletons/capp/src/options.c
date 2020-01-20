@@ -21,6 +21,18 @@
  *  Structure is defined in options.h since it needs to be visible.
  */
 
+struct options options_default = {
+   .appname = "MY NAME GOES HERE",
+   .appvers = "0.0.0",
+   .fname = NULL,
+   .help_flag = 0,
+   .prefix = "foo",
+   .quiet_flag = 0,
+   .verbosity = 0,
+   .version_flag = 0,
+   .extras = NULL
+};
+
 struct options *
 options_new(void)
 {
@@ -30,60 +42,63 @@ options_new(void)
    if (_IS_NULL(tp))
       return NULL;
 
-   tp->appname = "MY NAME GOES HERE";
-   tp->appvers = "0.1.0-dev0";
-   tp->fname = NULL;
-   tp->help_flag = 0;
-   tp->quiet_flag = 0;
-   tp->verbosity = 0;
-   tp->version_flag = 0;
-   tp->extras = NULL;
+   *tp = options_default;
 
    return tp;
 }
 
 void
-options_free(struct options *p)
+options_free(struct options **pp)
 {
-   if (_IS_NULL(p))
+   if (_IS_NULL(*pp))
       return;
 
    /* p->extras has pointers from optparse, no need to free them */
-   _FREE(p->extras);
-   _FREE(p->fname);
-   _FREE(p);
+   _FREE((*pp)->extras);
+   _FREE((*pp)->fname);
+   _FREE(*pp);
+   *pp = NULL;
 }
 
 void
 options_help_msg(struct options *p, FILE *out)
 {
    unsigned    indent = 5;
-   unsigned    width = 75;
+   unsigned    width = 70;
    struct linewrapper *w = lwrap_new();
+#ifdef  _BUFSIZE
+#undef  _BUFSIZE
+#endif
+#define _BUFSIZE                1000
+   char        buffer[_BUFSIZE];
 
    fprintf(out, "Usage: %s [options] infile1 [infile2 ...]\n", p->appname);
    fprintf(out, "Options:\n");
 
    fprintf(out, "%s\n", "-h, --help");
-   fprintf(out, "%s\n",
-           lwrap_format(w, indent, width, "Print this help message and exit."));
+   snprintf(buffer, _BUFSIZE, "Print this help message and exit.");
+   fprintf(out, "%s\n", lwrap_format(w, indent, width, buffer));
 
-   fprintf(out, "%s\n", "-pPREFIX, --prefix=PREFIX");
-   fprintf(out, "%s\n", lwrap_format(w, indent, width, "Set PREFIX as the prefix."));
+   fprintf(out, "%s\n", "-p PREFIX, --prefix=PREFIX");
+   snprintf(buffer, _BUFSIZE,
+            "Set PREFIX as the prefix. This is just to provide an example of "
+            "how to incorporate the default value of PREFIX (which is %s) in "
+            "a message.", options_default.prefix);
+   fprintf(out, "%s\n", lwrap_format(w, indent, width, buffer));
 
    fprintf(out, "%s\n", "-q, --quiet");
-   fprintf(out, "%s\n", lwrap_format(w, indent, width, "Run quietly."));
+   snprintf(buffer, _BUFSIZE, "Run quietly.");
+   fprintf(out, "%s\n", lwrap_format(w, indent, width, buffer));
 
    fprintf(out, "%s\n", "-v, --verbosity");
-   fprintf(out, "%s\n",
-           lwrap_format(w, indent, width,
-                        "Increase the level of reporting, multiples accumulate."));
+   snprintf(buffer, _BUFSIZE, "Increase the level of reporting, multiples accumulate.");
+   fprintf(out, "%s\n", lwrap_format(w, indent, width, buffer));
 
    fprintf(out, "%s\n", "-V, --version");
-   fprintf(out, "%s\n",
-           lwrap_format(w, indent, width, "Print the version information and exit."));
+   snprintf(buffer, _BUFSIZE, "Print the version information and exit.");
+   fprintf(out, "%s\n", lwrap_format(w, indent, width, buffer));
 
-   lwrap_free(w);
+   lwrap_free(&w);
 }
 
 void
@@ -101,13 +116,13 @@ options_parse(struct options *p, int argc, char *argv[])
       {"xyzzy", 'x', OPTPARSE_OPTIONAL},
       {0}
    };
-   struct optparse options;
+   struct optparse opts;
    int         fake_x;                      /* FIXME */
 
-   optparse_init(&options, argv);
-   options.permute = 0;                          /* set = 1 to allow argv to be permuted */
+   optparse_init(&opts, argv);
+   opts.permute = 0;                             /* set = 1 to allow argv to be permuted */
 
-   while ((option = optparse_long(&options, longopts, NULL)) != -1) {
+   while ((option = optparse_long(&opts, longopts, NULL)) != -1) {
       switch (option) {
          case 'h':
             printf("looks like you want help\n");
@@ -115,7 +130,7 @@ options_parse(struct options *p, int argc, char *argv[])
             break;
 
          case 'p':
-            printf("prefix set as %s\n", options.optarg);
+            printf("prefix set as %s\n", opts.optarg);
             break;
 
          case 'q':
@@ -136,7 +151,7 @@ options_parse(struct options *p, int argc, char *argv[])
 
          case 'x':
             printf("the x option has an optional argument\n");
-            fake_x = options.optarg ? atoi(options.optarg) : -1;
+            fake_x = opts.optarg ? atoi(opts.optarg) : -1;
             if (fake_x < 0)
                printf("... and none provided\n");
             else
@@ -158,7 +173,7 @@ options_parse(struct options *p, int argc, char *argv[])
       strcpy(p->fname, argv[optind]);
    }
 #endif
-   while ((arg = optparse_arg(&options))) {
+   while ((arg = optparse_arg(&opts))) {
       p->extras = realloc(p->extras, (2 + nextras) * sizeof(char *));
       (p->extras)[nextras] = arg;
       printf("Extra: %s\n", (p->extras)[nextras]);
