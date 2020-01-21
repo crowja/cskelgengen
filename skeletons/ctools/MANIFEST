@@ -1,0 +1,27 @@
+# List of regular files to export from this skeleton
+.bumpversion.cfg
+configure.ac
+import.bash
+m4/ax_lib_sqlite3.m4
+Makefile.in
+NOTES.md
+README.md
+src/errmsg.c
+src/errmsg.h
+src/linewrapper.c
+src/linewrapper.h
+src/main.c
+src/main.h
+src/Makefile
+src/options.c
+src/options.h
+src/optparse.h
+src/varstr.c
+src/varstr.h
+src/XXX_main.c
+src/XXX_main.h
+src/XXX_options.c
+src/XXX_options.h
+t/tinytest.h
+
+# And that's all folks ...
