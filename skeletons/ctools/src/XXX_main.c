@@ -1,5 +1,5 @@
 /**
- *  @file main.c
+ *  @file XXX_main.c
  *  @version 0.0.0
  *  @date
  *  @copyright 2020
@@ -12,8 +12,8 @@
 #include <stdio.h>                               /* FIXME */
 #include <string.h>                              /* FIXME */
 #include "main.h"
+#include "XXX_options.h"
 #include "options.h"
-#include "XXX_main.h"
 
 #ifdef  _IS_NULL
 #undef  _IS_NULL
@@ -26,21 +26,21 @@
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 int
-main(int argc, char *argv[])
+XXX_main(int argc, char *argv[], struct options *maino)
 {
-   struct options *o = options_new();
+   struct XXX_options *o = XXX_options_new();
 
-   options_parse(o, argc, argv);
+   XXX_options_parse(o, argc, argv);
 
    if (o->help_flag) {
-      options_help_msg(o, stdout);
-      options_free(&o);
+      XXX_options_help_msg(o, stdout);
+      XXX_options_free(&o);
       exit(0);
    }
 
    if (o->version_flag) {
       printf("%s version %s\n", o->appname, o->appvers);
-      options_free(&o);
+      XXX_options_free(&o);
       exit(0);
    }
 
@@ -48,7 +48,7 @@ main(int argc, char *argv[])
       o->verbosity = 0;
 
    if (o->verbosity > 0) {
-      printf("*** SOME OPTIONS DELIVERED TO MAIN.C ***\n");
+      printf("*** SOME OPTIONS DELIVERED TO XXX_MAIN.C ***\n");
       printf("appname         %s\n", o->appname);
       printf("appvers         %s\n", o->appvers);
       printf("--help          %d\n", o->help_flag);
@@ -60,20 +60,12 @@ main(int argc, char *argv[])
 
    /* o->extras will be NULL or a NULL-terminated list */
    if (!_IS_NULL(o->extras)) {
-      unsigned    count = 0;
       char      **tp = o->extras;
-      while (!_IS_NULL(*tp)) {
+      while (!_IS_NULL(*tp))
          printf("Also %s\n", *(tp++));           /* *tp++, clarified */
-         count++;
-      }
-      printf("HOW MANY EXTRAS? ... %d\n", count);
-
-      if (0 == strcmp(o->extras[0], "XXX")) {
-         XXX_main(count, o->extras, o);
-      }
    }
 
-   options_free(&o);
+   XXX_options_free(&o);
    return 0;
 }
 
