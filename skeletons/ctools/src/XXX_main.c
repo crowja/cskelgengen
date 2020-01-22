@@ -48,7 +48,7 @@ XXX_main(int argc, char *argv[], struct options *maino)
       o->verbosity = 0;
 
    if (o->verbosity > 0) {
-      printf("*** SOME OPTIONS DELIVERED TO XXX_MAIN.C ***\n");
+      printf("*** SOME OPTIONS DELIVERED TO XXX_main.c ***\n");
       printf("appname         %s\n", o->appname);
       printf("appvers         %s\n", o->appvers);
       printf("--help          %d\n", o->help_flag);
