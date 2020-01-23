@@ -10,10 +10,10 @@ T_DIR        = ./t
 BUILD_DIR    = ./build
 
 CC           = gcc
-CPPFLAGS     = -I$(SRC_DIR) @CPPFLAGS@ 
+CPPFLAGS     = @CPPFLAGS@ @DEFS@ -I$(SRC_DIR)
 ##GCC_SANITIZE_FLAGS = -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer
 GCC_SANITIZE_FLAGS =
-CFLAGS       = -std=c99 -pedantic -Wall $(GCC_SANITIZE_FLAGS)
+CFLAGS       = -std=c99 -pedantic -Wall $(GCC_SANITIZE_FLAGS) @OPENMP_CFLAGS@
 LDFLAGS      = @LDFLAGS@ $(GCC_SANITIZE_FLAGS)
 LDLIBS       = @LIBS@
 TARNAME      = @PACKAGE_TARNAME@-@PACKAGE_VERSION@

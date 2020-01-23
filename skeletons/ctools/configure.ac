@@ -10,6 +10,8 @@ AC_INIT(
   [http://example.com],
 )
 
+AC_CONFIG_HEADERS([src/config.h:config.h.in])
+
 dnl Unique file in the source directory
 AC_CONFIG_SRCDIR([src/main.c])
 
@@ -31,6 +33,11 @@ dnl If we need to pick up SQLite3.
 dnl https://www.gnu.org/software/autoconf-archive/ax_lib_sqlite3.html.
 m4_include([m4/ax_lib_sqlite3.m4])
 AX_LIB_SQLITE3
+
+dnl If we need to pick up SQLite3.
+dnl https://www.gnu.org/software/autoconf-archive/ax_lib_sqlite3.html.
+## m4_include([m4/ax_check_zlib.m4])
+## AX_CHECK_ZLIB
 
 dnl Process Makefile.in to create Makefile
 AC_CONFIG_FILES([Makefile])
