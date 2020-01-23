@@ -1,11 +1,13 @@
 # List of regular files to export from this skeleton
 .bumpversion.cfg
 configure.ac
+config.h.in
 import.bash
-m4/ax_lib_sqlite3.m4
 Makefile.in
 NOTES.md
 README.md
+m4/ax_check_zlib.m4
+m4/ax_lib_sqlite3.m4
 src/errmsg.c
 src/errmsg.h
 src/linewrapper.c
