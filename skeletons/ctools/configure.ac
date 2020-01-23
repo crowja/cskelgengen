@@ -34,10 +34,17 @@ dnl https://www.gnu.org/software/autoconf-archive/ax_lib_sqlite3.html.
 m4_include([m4/ax_lib_sqlite3.m4])
 AX_LIB_SQLITE3
 
-dnl If we need to pick up SQLite3.
-dnl https://www.gnu.org/software/autoconf-archive/ax_lib_sqlite3.html.
-## m4_include([m4/ax_check_zlib.m4])
-## AX_CHECK_ZLIB
+dnl If we need to pick up Zlib ...
+dnl https://www.gnu.org/software/autoconf-archive/ax_check_zlib.html.
+m4_include([m4/ax_check_zlib.m4])
+AX_CHECK_ZLIB(,[
+bld=$(tput bold)
+red=$(tput setaf 1)
+grn=$(tput setaf 2)
+yel=$(tput setaf 3)
+clr=$(tput sgr0)
+echo -e "${bld}${yel}Building without Zlib support, use --with-zlib=<zlib_home> if needed.${clr}"
+])
 
 dnl Process Makefile.in to create Makefile
 AC_CONFIG_FILES([Makefile])
