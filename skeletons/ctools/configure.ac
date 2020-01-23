@@ -43,7 +43,7 @@ red=$(tput setaf 1)
 grn=$(tput setaf 2)
 yel=$(tput setaf 3)
 clr=$(tput sgr0)
-echo -e "${bld}${yel}Building without Zlib support, use --with-zlib=<zlib_home> if needed.${clr}"
+echo -e "${bld}${yel}Configuring without Zlib support, use --with-zlib=<zlib_home> if needed.${clr}"
 ])
 
 dnl Process Makefile.in to create Makefile
