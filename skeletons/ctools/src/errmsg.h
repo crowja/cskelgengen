@@ -6,8 +6,8 @@
  *  @license Unlicense <http://unlicense.org/>
  */
 
-#ifndef _ERRMSG_H_
-#define _ERRMSG_H_
+#ifndef ERRMSG_H_
+#define ERRMSG_H_
 
 /**
  *  @brief Print an error, success, or warning message.

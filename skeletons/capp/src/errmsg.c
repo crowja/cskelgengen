@@ -12,40 +12,35 @@
 #include <string.h>
 #include "errmsg.h"
 
-#ifdef  _IS_NULL
-#undef  _IS_NULL
+#ifdef  COLOR_RED_
+#undef  COLOR_RED_
 #endif
-#define _IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
+#define COLOR_RED_        "\x1B[31m"
 
-#ifdef  _COLOR_RED
-#undef  _COLOR_RED
+#ifdef  COLOR_GREEN_
+#undef  COLOR_GREEN_
 #endif
-#define _COLOR_RED        "\x1B[31m"
+#define COLOR_GREEN_      "\x1B[32m"
 
-#ifdef  _COLOR_GREEN
-#undef  _COLOR_GREEN
+#ifdef  COLOR_YELLOW_
+#undef  COLOR_YELLOW_
 #endif
-#define _COLOR_GREEN      "\x1B[32m"
+#define COLOR_YELLOW_     "\x1B[33m"
 
-#ifdef  _COLOR_YELLOW
-#undef  _COLOR_YELLOW
+#ifdef  COLOR_BLUE_
+#undef  COLOR_BLUE_
 #endif
-#define _COLOR_YELLOW     "\x1B[33m"
+#define COLOR_BLUE_       "\x1B[34m"
 
-#ifdef  _COLOR_BLUE
-#undef  _COLOR_BLUE
+#ifdef  COLOR_RESET_
+#undef  COLOR_RESET_
 #endif
-#define _COLOR_BLUE       "\x1B[34m"
-
-#ifdef  _COLOR_RESET
-#undef  _COLOR_RESET
-#endif
-#define _COLOR_RESET      "\x1B[0m"
+#define COLOR_RESET_      "\x1B[0m"
 
 void
 errmsg_error(FILE *out, const char *info)
 {
-   fprintf(out, _COLOR_RED "[ERROR]" _COLOR_RESET);
+   fprintf(out, COLOR_RED_ "[ERROR]" COLOR_RESET_);
 
    if (NULL != info)
       printf(" %s", info);
@@ -56,7 +51,7 @@ errmsg_error(FILE *out, const char *info)
 void
 errmsg_success(FILE *out, const char *info)
 {
-   fprintf(out, _COLOR_GREEN "[SUCCESS]" _COLOR_RESET);
+   fprintf(out, COLOR_GREEN_ "[SUCCESS]" COLOR_RESET_);
 
    if (NULL != info)
       printf(" %s", info);
@@ -67,13 +62,10 @@ errmsg_success(FILE *out, const char *info)
 void
 errmsg_warning(FILE *out, const char *info)
 {
-   fprintf(out, _COLOR_YELLOW "[WARNING]" _COLOR_RESET);
+   fprintf(out, COLOR_YELLOW_ "[WARNING]" COLOR_RESET_);
 
    if (NULL != info)
       printf(" %s", info);
 
    printf("\n");
 }
-
-#undef _IS_NULL
-#undef _FREE
