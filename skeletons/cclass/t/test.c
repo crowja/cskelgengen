@@ -43,7 +43,7 @@ _printf_test_name(char *name, char *info)
 }
 
 static int
-_two_doubles_equal(double x, double y)
+two_doubles_equal(double x, double y)
 {
    double      t = fabs(x) + fabs(y);
    return fabs(x - y) < 4 * DBL_EPSILON * t ? 1 : 0;
@@ -73,7 +73,7 @@ test_stub(void)
 
    z = TMPL_CLASS_TAG_new();
    ASSERT("Constructor test, pt 1", z);
-   ASSERT("Here's a test ...", _two_doubles_equal(x, 1.23));
+   ASSERT("Here's a test ...", two_doubles_equal(x, 1.23));
    ASSERT_EQUALS(10, 10);
 
    TMPL_CLASS_TAG_free(&z);

@@ -6,13 +6,8 @@
  *  @license Unlicense <http://unlicense.org/>
  */
 
-#ifndef _TMPL_CLASS_NAME_UC_H_
-#define _TMPL_CLASS_NAME_UC_H_
-
-#ifdef  _PACKAGE_NAME
-#undef  _PACKAGE_NAME
-#endif
-#define _PACKAGE_NAME "TMPL_CLASS_NAME"
+#ifndef TMPL_CLASS_NAME_UC_H_
+#define TMPL_CLASS_NAME_UC_H_
 
 struct TMPL_CLASS_NAME;
 
