@@ -6,26 +6,26 @@
 #include "TMPL_CLASS_NAME.h"
 #include "tinytest.h"
 
-#ifdef _COLOR_CODE
-#undef _COLOR_CODE
+#ifdef  COLOR_CODE_
+#undef  COLOR_CODE_
 #endif
-#define _COLOR_CODE      0x1B
-#ifdef _COLOR_RED
-#undef _COLOR_RED
+#define COLOR_CODE_      0x1B
+#ifdef  COLOR_RED_
+#undef  COLOR_RED_
 #endif
-#define _COLOR_RED       "[1;31m"
-#ifdef _COLOR_GREEN
-#undef _COLOR_GREEN
+#define COLOR_RED_       "[1;31m"
+#ifdef  COLOR_GREEN_
+#undef  COLOR_GREEN_
 #endif
-#define _COLOR_GREEN     "[1;32m"
-#ifdef _COLOR_YELLOW
-#undef _COLOR_YELLOW
+#define COLOR_GREEN_     "[1;32m"
+#ifdef  COLOR_YELLOW_
+#undef  COLOR_YELLOW_
 #endif
-#define _COLOR_YELLOW    "[1;33m"
-#ifdef _COLOR_RESET
-#undef _COLOR_RESET
+#define COLOR_YELLOW_    "[1;33m"
+#ifdef  COLOR_RESET_
+#undef  COLOR_RESET_
 #endif
-#define _COLOR_RESET     "[0m"
+#define COLOR_RESET_     "[0m"
 
 static void
 _printf_test_name(char *name, char *info)
@@ -39,7 +39,7 @@ _printf_test_name(char *name, char *info)
 }
 
 static int
-_two_doubles_equal(double x, double y)
+two_doubles_equal(double x, double y)
 {
    double      t = fabs(x) + fabs(y);
    return fabs(x - y) < 4 * DBL_EPSILON * t ? 1 : 0;
@@ -60,7 +60,7 @@ test_func1(void)
 static void
 test_stub(void)
 {
-   ASSERT("test 1 in test_stub", _two_doubles_equal(0.0, 0.0));
+   ASSERT("test 1 in test_stub", two_doubles_equal(0.0, 0.0));
    _printf_test_name("test_stub", NULL);
    ASSERT_EQUALS(0, 0);
 }

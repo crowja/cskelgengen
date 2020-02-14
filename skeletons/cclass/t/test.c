@@ -6,35 +6,35 @@
 #include "TMPL_CLASS_NAME.h"
 #include "t/tinytest.h"
 
-#ifdef  _COLOR_CODE
-#undef  _COLOR_CODE
+#ifdef  COLOR_CODE_
+#undef  COLOR_CODE_
 #endif
-#define _COLOR_CODE       0x1B
+#define COLOR_CODE_       0x1B
 
-#ifdef  _COLOR_RED
-#undef  _COLOR_RED
+#ifdef  COLOR_RED_
+#undef  COLOR_RED_
 #endif
-#define _COLOR_RED        "[1;31m"
+#define COLOR_RED_        "[1;31m"
 
-#ifdef  _COLOR_GREEN
-#undef  _COLOR_GREEN
+#ifdef  COLOR_GREEN_
+#undef  COLOR_GREEN_
 #endif
-#define _COLOR_GREEN      "[1;32m"
+#define COLOR_GREEN_      "[1;32m"
 
-#ifdef  _COLOR_YELLOW
-#undef  _COLOR_YELLOW
+#ifdef  COLOR_YELLOW_
+#undef  COLOR_YELLOW_
 #endif
-#define _COLOR_YELLOW     "[1;33m"
+#define COLOR_YELLOW_     "[1;33m"
 
-#ifdef  _COLOR_RESET
-#undef  _COLOR_RESET
+#ifdef  COLOR_RESET_
+#undef  COLOR_RESET_
 #endif
-#define _COLOR_RESET      "[0m"
+#define COLOR_RESET_      "[0m"
 
 static void
 _printf_test_name(char *name, char *info)
 {
-   printf("%c%s%s%c%s", _COLOR_CODE, _COLOR_YELLOW, name, _COLOR_CODE, _COLOR_RESET);
+   printf("%c%s%s%c%s", COLOR_CODE_, COLOR_YELLOW_, name, COLOR_CODE_, COLOR_RESET_);
 
    if (NULL != info)
       printf(" [%s]\n", info);
