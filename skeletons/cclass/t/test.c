@@ -32,7 +32,7 @@
 #define COLOR_RESET_      "[0m"
 
 static void
-_printf_test_name(char *name, char *info)
+printf_test_name(char *name, char *info)
 {
    printf("%c%s%s%c%s", COLOR_CODE_, COLOR_YELLOW_, name, COLOR_CODE_, COLOR_RESET_);
 
@@ -54,7 +54,7 @@ test_constr(void)
 {
    struct TMPL_CLASS_NAME *z;
 
-   _printf_test_name("test_constr", "TMPL_CLASS_TAG_new, TMPL_CLASS_TAG_free");
+   printf_test_name("test_constr", "TMPL_CLASS_TAG_new, TMPL_CLASS_TAG_free");
 
    z = TMPL_CLASS_TAG_new();
    ASSERT("Constructor test", z);

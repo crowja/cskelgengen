@@ -28,9 +28,9 @@
 #define COLOR_RESET_     "[0m"
 
 static void
-_printf_test_name(char *name, char *info)
+printf_test_name(char *name, char *info)
 {
-   printf("%c%s%s%c%s", _COLOR_CODE, _COLOR_YELLOW, name, _COLOR_CODE, _COLOR_RESET);
+   printf("%c%s%s%c%s", COLOR_CODE_, COLOR_YELLOW_, name, COLOR_CODE_, COLOR_RESET_);
 
    if (NULL != info)
       printf(" [%s]\n", info);
@@ -50,7 +50,7 @@ test_func1(void)
 {
    char       *cp = malloc(10000);
 
-   _printf_test_name("test_func1", "TMPL_CLASS_TAG_func1");
+   printf_test_name("test_func1", "TMPL_CLASS_TAG_func1");
    memset(cp, 'a', 10000);
    ASSERT_EQUALS(0, TMPL_CLASS_TAG_func1(cp));
    free(cp);
@@ -61,7 +61,7 @@ static void
 test_stub(void)
 {
    ASSERT("test 1 in test_stub", two_doubles_equal(0.0, 0.0));
-   _printf_test_name("test_stub", NULL);
+   printf_test_name("test_stub", NULL);
    ASSERT_EQUALS(0, 0);
 }
 
