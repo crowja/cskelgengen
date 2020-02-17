@@ -11,15 +11,15 @@
 #define OPTPARSE_API static
 #include "optparse.h"
 
-#ifdef  _IS_NULL
-#undef  _IS_NULL
+#ifdef  IS_NULL
+#undef  IS_NULL
 #endif
-#define _IS_NULL(p)             ((NULL == (p)) ? (1) : (0))
+#define IS_NULL(p)             ((NULL == (p)) ? (1) : (0))
 
-#ifdef  _FREE
-#undef  _FREE
+#ifdef  FREE
+#undef  FREE
 #endif
-#define _FREE(p)                ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
+#define FREE(p)                ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 /**
  *  Structure is defined in options.h since it needs to be visible.
@@ -43,7 +43,7 @@ options_new(void)
    struct options *tp;
 
    tp = (struct options *) malloc(sizeof(struct options));
-   if (_IS_NULL(tp))
+   if (IS_NULL(tp))
       return NULL;
 
    *tp = options_default;
@@ -54,13 +54,13 @@ options_new(void)
 void
 options_free(struct options **pp)
 {
-   if (_IS_NULL(*pp))
+   if (IS_NULL(*pp))
       return;
 
    /* p->extras has pointers from optparse, no need to free them */
-   _FREE((*pp)->extras);
-   _FREE((*pp)->fname);
-   _FREE(*pp);
+   FREE((*pp)->extras);
+   FREE((*pp)->fname);
+   FREE(*pp);
    *pp = NULL;
 }
 
@@ -186,5 +186,5 @@ options_parse(struct options *p, int argc, char *argv[])
    }
 }
 
-#undef _IS_NULL
-#undef _FREE
+#undef IS_NULL
+#undef FREE
