@@ -2,7 +2,7 @@
  *  @file main.c
  *  @version 0.0.0
  *  @date
- *  @copyright 2020
+ *  @copyright
  *  @license Unlicense <http://unlicense.org/>
  *  @brief FIXME
  *  @details FIXME
@@ -14,15 +14,15 @@
 #include "main.h"
 #include "options.h"
 
-#ifdef  _IS_NULL
-#undef  _IS_NULL
+#ifdef  IS_NULL
+#undef  IS_NULL
 #endif
-#define _IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
+#define IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
 
-#ifdef  _FREE
-#undef  _FREE
+#ifdef  FREE
+#undef  FREE
 #endif
-#define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
+#define FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 int
 main(int argc, char *argv[])
@@ -58,9 +58,9 @@ main(int argc, char *argv[])
    }
 
    /* o->extras will be NULL or a NULL-terminated list */
-   if (!_IS_NULL(o->extras)) {
+   if (!IS_NULL(o->extras)) {
       char      **tp = o->extras;
-      while (!_IS_NULL(*tp))
+      while (!IS_NULL(*tp))
          printf("Also %s\n", *(tp++));           /* *tp++, clarified */
    }
 
@@ -68,5 +68,5 @@ main(int argc, char *argv[])
    return 0;
 }
 
-#undef _IS_NULL
-#undef _FREE
+#undef IS_NULL
+#undef FREE

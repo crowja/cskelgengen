@@ -1,13 +1,13 @@
 /**
  *  @file errmsg.h
  *  @version 0.1.0-dev0
- *  @date Sun Jan 19 23:12:14 CST 2020
+ *  @date Sun Feb 16, 2020 07:41:25 PM CST
  *  @copyright 2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>
  */
 
-#ifndef ERRMSG_H_
-#define ERRMSG_H_
+#ifndef ERRMSG_H
+#define ERRMSG_H
 
 /**
  *  @brief Print an error, success, or warning message.

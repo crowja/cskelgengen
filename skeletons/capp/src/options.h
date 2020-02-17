@@ -1,5 +1,5 @@
-#ifndef OPTIONS_H_
-#define OPTIONS_H_
+#ifndef OPTIONS_H
+#define OPTIONS_H
 
 struct options {
    char       *appname;
