@@ -6,8 +6,8 @@
  *  @license Unlicense <http://unlicense.org/>
  */
 
-#ifndef TMPL_CLASS_NAME_UC_H_
-#define TMPL_CLASS_NAME_UC_H_
+#ifndef TMPL_CLASS_NAME_UC_H
+#define TMPL_CLASS_NAME_UC_H
 
 struct TMPL_CLASS_NAME;
 

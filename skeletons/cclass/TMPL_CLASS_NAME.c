@@ -11,15 +11,15 @@
 #include <string.h>                              /* FIXME */
 #include "TMPL_CLASS_NAME.h"
 
-#ifdef  _IS_NULL
-#undef  _IS_NULL
+#ifdef  IS_NULL
+#undef  IS_NULL
 #endif
-#define _IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
+#define IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
 
-#ifdef  _FREE
-#undef  _FREE
+#ifdef  FREE
+#undef  FREE
 #endif
-#define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
+#define FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 struct TMPL_CLASS_NAME {
    void       *x;
@@ -31,7 +31,7 @@ TMPL_CLASS_TAG_new(void)
    struct TMPL_CLASS_NAME *tp;
 
    tp = (struct TMPL_CLASS_NAME *) malloc(sizeof(struct TMPL_CLASS_NAME));
-   if (_IS_NULL(tp))
+   if (IS_NULL(tp))
       return NULL;
 
    /* Do some magic here ... */
@@ -45,7 +45,7 @@ TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME **pp)
 
    /* Do some magic here ... */
 
-   _FREE(*pp);
+   FREE(*pp);
    *pp = NULL;
 }
 
@@ -65,5 +65,5 @@ TMPL_CLASS_TAG_version(void)
    return "0.0.0";
 }
 
-#undef  _IS_NULL
-#undef  _FREE
+#undef  IS_NULL
+#undef  FREE
