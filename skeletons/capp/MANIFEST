@@ -19,4 +19,5 @@ src/options.h
 src/optparse.h
 src/varstr.c
 src/varstr.h
+t/tinyhelp.h
 t/tinytest.h
