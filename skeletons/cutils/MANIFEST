@@ -3,8 +3,10 @@ Makefile
 TMPL_CLASS_NAME.c
 TMPL_CLASS_NAME.h
 t/test.c
+t/tinyhelp.h
 t/tinytest.h
 ex/ex_1.c
 NOTES.md
 README.md
 .bumpversion.cfg
+import.bash
