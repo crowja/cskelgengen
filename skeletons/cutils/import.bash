@@ -1,4 +1,4 @@
 #! /bin/bash
 
-##wget -N -Psrc https://raw.githubusercontent.com/crowja/hodgepodge/master/errmsg.c
-##wget -N -Psrc https://raw.githubusercontent.com/crowja/hodgepodge/master/errmsg.h
+wget -N -Pt https://raw.githubusercontent.com/crowja/tinyhelp/master/tinyhelp.h
+wget -N -Pt https://raw.githubusercontent.com/joewalnes/tinytest/master/tinytest.h
