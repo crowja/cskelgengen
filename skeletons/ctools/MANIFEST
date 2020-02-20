@@ -24,6 +24,7 @@ src/XXX_main.c
 src/XXX_main.h
 src/XXX_options.c
 src/XXX_options.h
+t/tinyhelp.h
 t/tinytest.h
 
 # And that's all folks ...
