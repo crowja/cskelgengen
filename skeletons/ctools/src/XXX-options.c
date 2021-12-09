@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "XXX-options.h"
-#include "options.h"
 #include "linewrapper.h"
 #define OPTPARSE_IMPLEMENTATION
 #define OPTPARSE_API static

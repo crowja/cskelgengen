@@ -6,8 +6,6 @@ all:
 indent:
 	@indent $(INDENT_FLAGS) main.c
 	@indent $(INDENT_FLAGS) main.h
-	@indent $(INDENT_FLAGS) options.c
-	@indent $(INDENT_FLAGS) options.h
 	@indent $(INDENT_FLAGS) XXX-main.c
 	@indent $(INDENT_FLAGS) XXX-main.h
 	@indent $(INDENT_FLAGS) XXX-options.c

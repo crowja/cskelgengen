@@ -15,8 +15,6 @@ src/linewrapper.h
 src/main.c
 src/main.h
 src/Makefile
-src/options.c
-src/options.h
 src/optparse.h
 src/varstr.c
 src/varstr.h
