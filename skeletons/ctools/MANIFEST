@@ -18,10 +18,10 @@ src/Makefile
 src/optparse.h
 src/varstr.c
 src/varstr.h
-src/XXX_main.c
-src/XXX_main.h
-src/XXX_options.c
-src/XXX_options.h
+src/XXX-main.c
+src/XXX-main.h
+src/XXX-options.c
+src/XXX-options.h
 t/tinyhelp.h
 t/tinytest.h
 
