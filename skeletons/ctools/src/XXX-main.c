@@ -1,5 +1,5 @@
 /**
- *  @file XXX_main.c
+ *  @file XXX-main.c
  *  @version 0.0.0
  *  @date
  *  @copyright 2020
@@ -15,9 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>                               /* FIXME */
 #include <string.h>                              /* FIXME */
-#include "main.h"
-#include "XXX_options.h"
-#include "options.h"
+#include "XXX-options.h"
 
 #ifdef  IS_NULL
 #undef  IS_NULL
@@ -30,7 +28,7 @@
 #define FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 int
-XXX_main(int argc, char *argv[], struct options *maino)
+XXX_main(int argc, char *argv[])
 {
    struct XXX_options *o = XXX_options_new();
 
@@ -64,7 +62,7 @@ XXX_main(int argc, char *argv[], struct options *maino)
 
    /* o->extras will be NULL or a NULL-terminated list */
    if (!IS_NULL(o->extras)) {
-      char      **tp = o->extras;
+      char    **tp = o->extras;
       while (!IS_NULL(*tp))
          printf("Also %s\n", *(tp++));           /* *tp++, clarified */
    }

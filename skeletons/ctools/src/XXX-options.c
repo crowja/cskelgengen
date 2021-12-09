@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "XXX_options.h"
+#include "XXX-options.h"
 #include "options.h"
 #include "linewrapper.h"
 #define OPTPARSE_IMPLEMENTATION
@@ -23,7 +23,7 @@
 #define FREE(p)                ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 /**
- *  Structure is defined in XXX_options.h since it needs to be visible.
+ *  Structure is defined in XXX-options.h since it needs to be visible.
  */
 
 struct XXX_options XXX_options_default = {
@@ -68,14 +68,14 @@ XXX_options_free(struct XXX_options **pp)
 void
 XXX_options_help_msg(struct XXX_options *p, FILE *out)
 {
-   unsigned    indent = 5;
-   unsigned    width = 70;
+   unsigned  indent = 5;
+   unsigned  width = 70;
    struct linewrapper *w = lwrap_new();
 #ifdef  _BUFSIZE
 #undef  _BUFSIZE
 #endif
-#define _BUFSIZE                1000
-   char        buffer[_BUFSIZE];
+#define _BUFSIZE                1024
+   char      buffer[_BUFSIZE];
 
    fprintf(out, "Usage: %s [options] infile1 [infile2 ...]\n", p->appname);
    fprintf(out, "Options:\n");
@@ -109,9 +109,9 @@ XXX_options_help_msg(struct XXX_options *p, FILE *out)
 void
 XXX_options_parse(struct XXX_options *p, int argc, char *argv[])
 {
-   char       *arg;
-   int         option;
-   unsigned    nextras = 0;
+   char     *arg;
+   int       option;
+   unsigned  nextras = 0;
    static struct optparse_long longopts[] = {
       {"help", 'h', OPTPARSE_NONE},
       {"prefix", 'p', OPTPARSE_REQUIRED},
@@ -122,7 +122,7 @@ XXX_options_parse(struct XXX_options *p, int argc, char *argv[])
       {0}
    };
    struct optparse opts;
-   int         fake_x;                      /* FIXME */
+   int       fake_x;                        /* FIXME */
 
    optparse_init(&opts, argv);
    opts.permute = 0;                             /* set = 1 to allow argv to be permuted */
@@ -178,6 +178,7 @@ XXX_options_parse(struct XXX_options *p, int argc, char *argv[])
       strcpy(p->fname, argv[optind]);
    }
 #endif
+
    while ((arg = optparse_arg(&opts))) {
       p->extras = realloc(p->extras, (2 + nextras) * sizeof(char *));
       (p->extras)[nextras] = arg;

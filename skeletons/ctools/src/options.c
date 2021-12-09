@@ -67,14 +67,14 @@ options_free(struct options **pp)
 void
 options_help_msg(struct options *p, FILE *out)
 {
-   unsigned    indent = 5;
-   unsigned    width = 70;
+   unsigned  indent = 5;
+   unsigned  width = 70;
    struct linewrapper *w = lwrap_new();
 #ifdef  _BUFSIZE
 #undef  _BUFSIZE
 #endif
 #define _BUFSIZE                1000
-   char        buffer[_BUFSIZE];
+   char      buffer[_BUFSIZE];
 
    fprintf(out, "Usage: %s [options] infile1 [infile2 ...]\n", p->appname);
    fprintf(out, "Options:\n");
@@ -108,9 +108,9 @@ options_help_msg(struct options *p, FILE *out)
 void
 options_parse(struct options *p, int argc, char *argv[])
 {
-   char       *arg;
-   int         option;
-   unsigned    nextras = 0;
+   char     *arg;
+   int       option;
+   unsigned  nextras = 0;
    static struct optparse_long longopts[] = {
       {"help", 'h', OPTPARSE_NONE},
       {"prefix", 'p', OPTPARSE_REQUIRED},
@@ -121,7 +121,7 @@ options_parse(struct options *p, int argc, char *argv[])
       {0}
    };
    struct optparse opts;
-   int         fake_x;                      /* FIXME */
+   int       fake_x;                        /* FIXME */
 
    optparse_init(&opts, argv);
    opts.permute = 0;                             /* set = 1 to allow argv to be permuted */

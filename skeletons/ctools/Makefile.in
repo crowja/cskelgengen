@@ -40,8 +40,8 @@ $(BUILD_DIR)/a.out: $(BUILD_DIR)/linewrapper.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/main.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/options.o
 $(BUILD_DIR)/a.out: $(BUILD_DIR)/varstr.o
-$(BUILD_DIR)/a.out: $(BUILD_DIR)/XXX_main.o
-$(BUILD_DIR)/a.out: $(BUILD_DIR)/XXX_options.o
+$(BUILD_DIR)/a.out: $(BUILD_DIR)/XXX-main.o
+$(BUILD_DIR)/a.out: $(BUILD_DIR)/XXX-options.o
 $(BUILD_DIR)/a.out: 
 	$(CC) -o $(BUILD_DIR)/a.out \
 		$(BUILD_DIR)/errmsg.o \
@@ -49,8 +49,8 @@ $(BUILD_DIR)/a.out:
 		$(BUILD_DIR)/main.o \
 		$(BUILD_DIR)/options.o \
 		$(BUILD_DIR)/varstr.o \
-		$(BUILD_DIR)/XXX_main.o \
-		$(BUILD_DIR)/XXX_options.o \
+		$(BUILD_DIR)/XXX-main.o \
+		$(BUILD_DIR)/XXX-options.o \
 		$(LDFLAGS) $(LDLIBS)
 
 $(BUILD_DIR)/errmsg.o: $(SRC_DIR)/errmsg.c $(SRC_DIR)/errmsg.h
@@ -68,11 +68,11 @@ $(BUILD_DIR)/options.o: $(SRC_DIR)/options.c $(SRC_DIR)/options.h
 $(BUILD_DIR)/varstr.o: $(SRC_DIR)/varstr.c $(SRC_DIR)/varstr.h
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/varstr.c
 
-$(BUILD_DIR)/XXX_main.o: $(SRC_DIR)/XXX_main.c $(SRC_DIR)/XXX_main.h
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/XXX_main.c
+$(BUILD_DIR)/XXX-main.o: $(SRC_DIR)/XXX-main.c $(SRC_DIR)/XXX-main.h
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/XXX-main.c
 
-$(BUILD_DIR)/XXX_options.o: $(SRC_DIR)/XXX_options.c $(SRC_DIR)/XXX_options.h
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/XXX_options.c
+$(BUILD_DIR)/XXX-options.o: $(SRC_DIR)/XXX-options.c $(SRC_DIR)/XXX-options.h
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $(SRC_DIR)/XXX-options.c
 
 tarball:
 	@if [ -n "@PACKAGE_TARNAME@" ]; then \
