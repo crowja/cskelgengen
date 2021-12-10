@@ -46,7 +46,7 @@ function write_header {
   
   echo "Entered write_header()"
   #skelgen_version=`date +"%s"`
-  skelgen_version="0.15.0-dev0"
+  skelgen_version="0.15.0"
   skelgen_version_date=`date +"%c"`
   
   if [ -f "$skel/HEADER.bash" ]
@@ -131,7 +131,7 @@ function mkgen {
   dest="build"
   mkdir -p ${dest}
   
-  progname="$1"gen-"0.15.0-dev0"
+  progname="$1"gen-"0.15.0"
   progfile="${dest}/${progname}"
   
   write_header ${skel} ${progfile}
@@ -150,7 +150,7 @@ function main {
     mkgen $1
     if [ $? ]
     then
-      echo -e "${COLOR_GREEN}SUCCESS:${COLOR_NC} ${1}gen-0.15.0-dev0 built."
+      echo -e "${COLOR_GREEN}SUCCESS:${COLOR_NC} ${1}gen-0.15.0 built."
     fi
   else
     echo -e "${COLOR_RED}FAILED:${COLOR_NC} skeletons/$1/MANIFEST not found."
