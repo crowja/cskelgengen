@@ -82,6 +82,7 @@ main(int argc, char *argv[])
 
    if (strcmp(argv[1], "XXX") == 0) {
       int       rc = XXX_main(argc - 1, argv + 1);
+      return rc;
    }
    else if (strcmp(argv[1], "YYY") == 0) {
       printf("Need to call YYY_main()\n");
