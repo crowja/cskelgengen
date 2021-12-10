@@ -21,6 +21,12 @@ being used, it can be updated as shown below.
 `Makefile.in` will need substantial cleaning since it contains many examples of
 variables set by Autoconf templating.
 
+## Tool templates
+
+The files `src/XXX-main.c`, `src/XXX-main.h`, `src/XXX-options.c`, and
+`src/XXX-options.h` are templates for developing each tool in your
+tool-set.
+
 ## FYI
 
 `src/Makefile` is simply a convenience for the dev; it's not called by the
