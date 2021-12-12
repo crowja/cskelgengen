@@ -21,16 +21,16 @@
 #endif
 #define FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-struct TMPL_CLASS_NAME {
+struct TMPL_CLASS_TAG {
    void       *x;
 };
 
-struct TMPL_CLASS_NAME *
+struct TMPL_CLASS_TAG *
 TMPL_CLASS_TAG_new(void)
 {
-   struct TMPL_CLASS_NAME *tp;
+   struct TMPL_CLASS_TAG *tp;
 
-   tp = (struct TMPL_CLASS_NAME *) malloc(sizeof(struct TMPL_CLASS_NAME));
+   tp = (struct TMPL_CLASS_TAG *) malloc(sizeof(struct TMPL_CLASS_TAG));
    if (IS_NULL(tp))
       return NULL;
 
@@ -40,7 +40,7 @@ TMPL_CLASS_TAG_new(void)
 }
 
 void
-TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME **pp)
+TMPL_CLASS_TAG_free(struct TMPL_CLASS_TAG **pp)
 {
 
    /* Do some magic here ... */
@@ -50,7 +50,7 @@ TMPL_CLASS_TAG_free(struct TMPL_CLASS_NAME **pp)
 }
 
 int
-TMPL_CLASS_TAG_init(struct TMPL_CLASS_NAME *p, void *x)
+TMPL_CLASS_TAG_init(struct TMPL_CLASS_TAG *p, void *x)
 {
 
    /* Do some magic here ... */

@@ -10,7 +10,7 @@
 static void
 test_constr(void)
 {
-   struct TMPL_CLASS_NAME *z;
+   struct TMPL_CLASS_TAG *z;
 
    fprintf_test_info(stdout, "test_constr", "TMPL_CLASS_TAG_new, TMPL_CLASS_TAG_free");
    z = TMPL_CLASS_TAG_new();
@@ -23,7 +23,7 @@ test_constr(void)
 static void
 test_stub(void)
 {
-   struct TMPL_CLASS_NAME *z;
+   struct TMPL_CLASS_TAG *z;
 
    fprintf_test_info(stdout, "test_stub", NULL);
    z = TMPL_CLASS_TAG_new();
