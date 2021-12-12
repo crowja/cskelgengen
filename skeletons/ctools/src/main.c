@@ -36,15 +36,20 @@
 #define FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 static int
-is_in_list(char *query, unsigned n, ...)
+is_in_tuple(char *query, ...)
 {
-   int       i;
-   va_list   valist;
-   va_start(valist, n);
-   for (i = 0; i < n; i++)
-      if (strcmp(query, va_arg(valist, char *)) == 0)
+   va_list   ap;
+   char     *s;
+
+   if (query == NULL || query[0] == '\0')
+      return 0;
+
+   va_start(ap, query);
+   while ((s = va_arg(ap, char *)))
+      if        (strcmp(query, s) == 0)
          return 1;
-   va_end(valist);
+   va_end(ap);
+
    return 0;
 }
 
@@ -71,12 +76,12 @@ main(int argc, char *argv[])
       exit(0);
    }
 
-   if (is_in_list(argv[1], 2, "-V", "--version")) {
+   if (is_in_tuple(argv[1], "-V", "--version")) {
       printf("my-toolkit %s\n", VERSION);
       return 0;
    }
 
-   if (is_in_list(argv[1], 2, "-h", "--help")) {
+   if (is_in_tuple(argv[1], "-h", "--help")) {
       main_usage(stdout);
       return 0;
    }
