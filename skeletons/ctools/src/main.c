@@ -23,6 +23,7 @@
 #include <string.h>
 #include "main.h"
 #include "XXX-main.h"
+#include "colormsg.h"
 
 #ifdef  IS_NULL
 #undef  IS_NULL
@@ -88,7 +89,8 @@ main(int argc, char *argv[])
       printf("Need to call YYY_main()\n");
    }
    else {
-      fprintf(stderr, "Unknown argument \'%s\' to my-toolkit\n", argv[1]);
+      fprintf(stderr, COLOR_MSG_ERROR " Unknown argument \'%s\' to my-toolkit\n",
+              argv[1]);
       exit(1);
    }
 }
